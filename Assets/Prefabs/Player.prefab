@@ -100,10 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ae5d9320889f74fa69973f80a293d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumberEnum: 0
   moveSpeed: 5
   characterRigidbody: {fileID: 8019892184741028023}
-  golem: {fileID: 0}
-  playerNumber: 1
 --- !u!50 &8019892184741028023
 Rigidbody2D:
   serializedVersion: 4
@@ -198,7 +197,20 @@ MonoBehaviour:
     m_ActionId: c2b2e213-94f3-4eaa-817c-3bfc4420168d
     m_ActionName: Player/Look[/XInputControllerWindows/rightStick,/SwitchProControllerHID/rightStick,/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8019892184741028020}
+        m_TargetAssemblyTypeName: DungeonCrawler_HarropCharlie.CharacterController,
+          Assembly-CSharp
+        m_MethodName: OnFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 995e8314-edfd-4068-99ca-0964107c0387
     m_ActionName: Player/Fire[/XInputControllerWindows/rightTrigger,/SwitchProControllerHID/rightTrigger,/Mouse/leftButton]
   - m_PersistentCalls:
@@ -241,6 +253,23 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 7d93b8d4-e537-4397-9fa7-bdfc45e8561e
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8019892184741028020}
+        m_TargetAssemblyTypeName: DungeonCrawler_HarropCharlie.CharacterController,
+          Assembly-CSharp
+        m_MethodName: OnAccept
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 019f45ff-0391-4a8c-a9a3-3ef52b5d9c7c
+    m_ActionName: Player/Accept[/XInputControllerWindows/buttonSouth,/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
