@@ -13,6 +13,8 @@ namespace DungeonCrawler_HarropCharlie
 
         public float moveSpeed = 5f;
         public Rigidbody2D characterRigidbody;
+
+        [SerializeField] private Color playerColour;
         public Vector2 playerMovement { get; set; }
         public bool isInGolemTrigger { get; set; }
         public bool inGolem { get; set; }
@@ -91,6 +93,8 @@ namespace DungeonCrawler_HarropCharlie
                 default:
                     break;
             }
+
+            //this.GetComponent<SpriteRenderer>().color = playerColour;
         }
 
         private void FixedUpdate()
