@@ -34,6 +34,11 @@ namespace DungeonCrawler_HarropCharlie
             allPlayers.Add(playerInput.gameObject);
             totalPlayersInGame++;
         }
+        public void OnPlayerLeave(PlayerInput playerInput)
+        {
+            allPlayers.Remove(playerInput.gameObject);
+            totalPlayersInGame--;
+        }
 
         public void FindCharacterController()
         {

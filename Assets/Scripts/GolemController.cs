@@ -37,7 +37,7 @@ namespace DungeonCrawler_HarropCharlie
             }
             else if (PlayerCharacterManager.player2 != null && PlayerCharacterManager.player2.GetComponent<CharacterController>().inGolem)
             {
-                GolemShoot();
+                //GolemShoot();
             }
         }
 
@@ -54,7 +54,7 @@ namespace DungeonCrawler_HarropCharlie
             if (PlayerCharacterManager.player2.GetComponent<CharacterController>().inGolem && golemShootingDirection != new Vector2(0,0))
             {
                 GameObject newbullet = Instantiate(bullet, golemRigidbody.position + golemShootingDirection * bulletDistanceFromGolem, transform.rotation);
-                newbullet.GetComponent<Rigidbody2D>().velocity = golemShootingDirection * bulletSpeed;
+                newbullet.GetComponent<Rigidbody2D>().velocity = golemShootingDirection.normalized * bulletSpeed;
             }
         }
 

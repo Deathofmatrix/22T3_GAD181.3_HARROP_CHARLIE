@@ -11,6 +11,9 @@ namespace DungeonCrawler_HarropCharlie
         public enum PlayerNumberEnum { Undeclared, Player1, Player2 };
         [SerializeField] private PlayerNumberEnum playerNumberEnum = PlayerNumberEnum.Undeclared;
 
+        [SerializeField] private Sprite player1Sprite;
+        [SerializeField] private Sprite player2Sprite;
+
         public float moveSpeed = 5f;
         public Rigidbody2D characterRigidbody;
         public Vector2 playerMovement { get; set; }
@@ -38,6 +41,14 @@ namespace DungeonCrawler_HarropCharlie
             playerNumberEnum = (PlayerNumberEnum)PlayerCharacterManager.totalPlayersInGame;
             this.name = this.playerNumberEnum.ToString();
 
+            if(playerNumberEnum == PlayerNumberEnum.Player1)
+            {
+                transform.position = Vector2.left * 2;
+            }
+            if (playerNumberEnum == PlayerNumberEnum.Player2)
+            {
+                transform.position = Vector2.right * 2;
+            }
         }
 
         public void OnMove(InputAction.CallbackContext callbackContext)
@@ -65,9 +76,10 @@ namespace DungeonCrawler_HarropCharlie
 
         public void OnFire(InputAction.CallbackContext callbackContext)
         {
-            if (callbackContext.performed)
+            if (callbackContext.started)
             {
                 PlayerCharacterManager.golem.GetComponent<GolemController>().GolemShoot();
+                Debug.Log("shoot");
             }
             else if (callbackContext.canceled)
             {
@@ -80,10 +92,10 @@ namespace DungeonCrawler_HarropCharlie
             switch (playerNumberEnum)
             {
                 case PlayerNumberEnum.Player1:
-                    this.GetComponent<SpriteRenderer>().color = Color.blue;
+                    this.GetComponent<SpriteRenderer>().sprite = player1Sprite;
                     break;
                 case PlayerNumberEnum.Player2:
-                    this.GetComponent<SpriteRenderer>().color = Color.green;
+                    this.GetComponent<SpriteRenderer>().sprite = player2Sprite;
                     break;
                 case PlayerNumberEnum.Undeclared:
                     Debug.LogError("No player number!!!");

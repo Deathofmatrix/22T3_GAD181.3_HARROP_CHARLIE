@@ -14,6 +14,7 @@ namespace DungeonCrawler_HarropCharlie
         // Update is called once per frame
         void Update()
         {
+
             currentTime += Time.deltaTime;
 
             if (currentTime > timeToSpawnEnemy)
