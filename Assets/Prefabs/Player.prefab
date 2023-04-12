@@ -101,8 +101,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumberEnum: 0
-  player1Sprite: {fileID: 21300000, guid: 1a5b5a3d63216e2459432134e6c76163, type: 3}
-  player2Sprite: {fileID: 21300000, guid: 9a05d853e5475ee478c9503c5a56e4b0, type: 3}
+  player1Sprite: {fileID: 21300000, guid: 9656888e9bdb6174796981e93c33f4dc, type: 3}
+  player2Sprite: {fileID: 21300000, guid: 893b0e0dcb3760846bb526da26512402, type: 3}
+  target:
+    target: {fileID: 8019892184741028022}
+    weight: 1
+    radius: 3
   moveSpeed: 5
   characterRigidbody: {fileID: 8019892184741028023}
 --- !u!50 &8019892184741028023

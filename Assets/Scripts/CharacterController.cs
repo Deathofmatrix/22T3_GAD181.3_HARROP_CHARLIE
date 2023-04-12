@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -13,6 +14,9 @@ namespace DungeonCrawler_Chaniel
 
         [SerializeField] private Sprite player1Sprite;
         [SerializeField] private Sprite player2Sprite;
+
+        private Cinemachine.CinemachineTargetGroup targetGroup1;
+        [SerializeField] private Cinemachine.CinemachineTargetGroup.Target target;
 
         public float moveSpeed = 5f;
         public Rigidbody2D characterRigidbody;
@@ -49,6 +53,8 @@ namespace DungeonCrawler_Chaniel
             {
                 transform.position = Vector2.right * 2;
             }
+
+            AddPlayerToTargetGroup();
         }
 
         public void OnMove(InputAction.CallbackContext callbackContext)
@@ -143,6 +149,20 @@ namespace DungeonCrawler_Chaniel
             if (GolemController.charactersInGolem == 0)
             {
                 PlayerCharacterManager.golem.GetComponent<GolemController>().golemActivated = false;
+            }
+        }
+
+        private void AddPlayerToTargetGroup()
+        {
+            targetGroup1 = GameObject.Find("TargetGroup1").GetComponent<CinemachineTargetGroup>();
+
+            for (int i = 0; i < targetGroup1.m_Targets.Length; i++)
+            {
+                if (targetGroup1.m_Targets[i].target == null)
+                {
+                    targetGroup1.m_Targets.SetValue(target, i);
+                    return;
+                }
             }
         }
     }
