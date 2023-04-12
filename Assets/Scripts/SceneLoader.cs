@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace DungeonCrawler_HarropCharlie
+namespace DungeonCrawler_Chaniel
 {
     public class SceneLoader : MonoBehaviour
     {

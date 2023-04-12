@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
-namespace DungeonCrawler_HarropCharlie
+namespace DungeonCrawler_Chaniel
 {
     public class PlayerCharacterManager : MonoBehaviour
     {

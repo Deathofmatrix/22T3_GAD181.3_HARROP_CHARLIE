@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace DungeonCrawler_HarropCharlie
+namespace DungeonCrawler_Chaniel
 {
     public class CharacterController : MonoBehaviour
     {

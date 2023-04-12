@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DungeonCrawler_HarropCharlie
+namespace DungeonCrawler_Chaniel
 {
     public class Bullet : MonoBehaviour
     {

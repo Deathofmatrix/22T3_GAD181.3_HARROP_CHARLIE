@@ -1,10 +1,10 @@
-using DungeonCrawler_HarropCharlie;
+using DungeonCrawler_Chaniel;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace DungeonCrawler_HarropCharlie
+namespace DungeonCrawler_Chaniel
 {
     public class Enemy : MonoBehaviour
     {
