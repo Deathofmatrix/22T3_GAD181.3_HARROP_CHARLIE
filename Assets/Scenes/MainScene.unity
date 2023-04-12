@@ -364,7 +364,11 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
+<<<<<<< Updated upstream
   orthographic size: 5.84375
+=======
+  orthographic size: 7.6666665
+>>>>>>> Stashed changes
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
