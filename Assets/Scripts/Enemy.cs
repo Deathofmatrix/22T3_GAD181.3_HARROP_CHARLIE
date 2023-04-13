@@ -10,10 +10,14 @@ namespace DungeonCrawler_Chaniel
     {
         //[SerializeField] private float enemySpeed;
         [SerializeField] private SceneLoader sceneLoader;
+        public Room room;
 
         private void Start()
         {
+            room = GameObject.Find("Room1").GetComponent<Room>();
+            room.enemiesSpawned++;
             sceneLoader = GameObject.Find("Scene Manager").GetComponent<SceneLoader>();
+
         }
         void Update()
         {

@@ -11,10 +11,19 @@ namespace DungeonCrawler_Chaniel
 
         [SerializeField] private GameObject enemyPrefab;
 
+        public bool stopSpawning { get; set; }
+
         // Update is called once per frame
         void Update()
         {
+            if (!stopSpawning)
+            {
+                SpawnEnemyOnTimer();
+            }
+        }
 
+        public void SpawnEnemyOnTimer()
+        {
             currentTime += Time.deltaTime;
 
             if (currentTime > timeToSpawnEnemy)

@@ -3,19 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomSwitcher : MonoBehaviour
+namespace DungeonCrawler_Chaniel
 {
-    public PolygonCollider2D cameraBounds;
-    public Collider2D door;
-    public GameObject roomUp;
-    public CinemachineConfiner2D cameraConfiner;
-    private void OnCollisionEnter2D(Collision2D collision)
+    public class RoomSwitcher : MonoBehaviour
     {
-        if (collision.gameObject.CompareTag("Golem"))
+        public PolygonCollider2D cameraBounds;
+        public Collider2D door;
+        public GameObject roomUp;
+        public CinemachineConfiner2D cameraConfiner;
+        public int xPlayerSpawn;
+        public int yPlayerSpawn;
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            roomUp.SetActive(true);
-            collision.gameObject.transform.position = new Vector2(door.transform.position.x, door.transform.position.y + 1);
-            cameraConfiner.m_BoundingShape2D = cameraBounds;
+            if (collision.gameObject.CompareTag("Golem"))
+            {
+                roomUp.SetActive(true);
+                collision.gameObject.transform.position = new Vector2(door.transform.position.x + xPlayerSpawn, door.transform.position.y + yPlayerSpawn);
+                cameraConfiner.m_BoundingShape2D = cameraBounds;
+            }
         }
     }
+
 }

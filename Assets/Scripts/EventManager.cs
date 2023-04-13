@@ -14,12 +14,12 @@ namespace DungeonCrawler_Chaniel
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetKeyDown(KeyCode.Backspace))
             {
                 SwitchedToGolem();
             }
 
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetKeyDown(KeyCode.Delete))
             {
                 SwitchedFromGolem();
             }
