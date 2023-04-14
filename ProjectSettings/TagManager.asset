@@ -7,6 +7,10 @@ TagManager:
   - Golem
   - PlayerBullet
   - Wall
+  - SpawnPoint
+  - Door
+  - Rooms
+  - AdjacencyTrigger
   layers:
   - Default
   - TransparentFX
