@@ -12,6 +12,12 @@ namespace DungeonCrawler_Chaniel
         [SerializeField] private SceneLoader sceneLoader;
         public Room room;
 
+        public float speed;
+        public Transform target;
+        public float minimumDistance;
+        [SerializeField] private Rigidbody2D rigidBody2D;
+        [SerializeField] Vector3 direction;
+
         private void Start()
         {
             room = GameObject.Find("Room1").GetComponent<Room>();
@@ -19,9 +25,10 @@ namespace DungeonCrawler_Chaniel
             sceneLoader = GameObject.Find("Scene Manager").GetComponent<SceneLoader>();
 
         }
-        void Update()
+        void FixedUpdate()
         {
-            transform.position = Vector2.MoveTowards(transform.position, PlayerCharacterManager.golem.transform.position, EnemyManager.enemySpeed * Time.deltaTime);
+            direction = (target.transform.position - rigidBody2D.transform.position).normalized;
+            rigidBody2D.MovePosition(rigidBody2D.transform.position + direction * speed * Time.fixedDeltaTime);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)

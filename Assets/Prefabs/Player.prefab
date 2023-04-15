@@ -77,15 +77,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 80fbd38fdfc71e74790ff85a4c8cea50, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c6984a1de73fcf24d81e8341a1060fff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5208333, y: 0.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &8019892184741028020
@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumberEnum: 0
-  player1Sprite: {fileID: 21300000, guid: 9656888e9bdb6174796981e93c33f4dc, type: 3}
-  player2Sprite: {fileID: 21300000, guid: 893b0e0dcb3760846bb526da26512402, type: 3}
+  player1Sprite: {fileID: 21300000, guid: c6984a1de73fcf24d81e8341a1060fff, type: 3}
+  player2Sprite: {fileID: 21300000, guid: 96988885bd8eb2c47a959d265d61a805, type: 3}
   target:
     target: {fileID: 8019892184741028022}
     weight: 1
@@ -143,18 +143,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000000029802322, y: -0.00133425}
+  m_Offset: {x: 0.008035004, y: 0.0050937533}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 0.5208333, y: 0.5}
+    newSize: {x: 0.5208333, y: 0.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5371834, y: 0.5114714}
   m_EdgeRadius: 0
 --- !u!114 &488796305
 MonoBehaviour:

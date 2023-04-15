@@ -6,6 +6,15 @@ namespace DungeonCrawler_Chaniel
 {
     public class Bullet : MonoBehaviour
     {
+        [SerializeField] private bool isPlayerBullet;
+        //false --> enemy bullet
+        Vector3 targetPosition;
+        public float speed;
+
+        private void Start()
+        {
+            targetPosition = FindObjectOfType<GolemController>().transform.position;
+        }
         private void OnBecameInvisible()
         {
             Destroy(gameObject);
@@ -16,6 +25,10 @@ namespace DungeonCrawler_Chaniel
             if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Door"))
             {
                 Destroy(gameObject);
+            }
+
+            if (!isPlayerBullet)
+            {
             }
         }
     }

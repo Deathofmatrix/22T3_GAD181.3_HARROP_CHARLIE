@@ -11,6 +11,8 @@ TagManager:
   - Door
   - Rooms
   - AdjacencyTrigger
+  - EnemyBullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
