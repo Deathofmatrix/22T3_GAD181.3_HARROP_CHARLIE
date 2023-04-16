@@ -14,6 +14,8 @@ namespace DungeonCrawler_Chaniel
         public int xPlayerSpawn;
         public int yPlayerSpawn;
 
+        [SerializeField] private SpriteRenderer spriteRenderer;
+
         public enum DoorDirection { UNDEFINED, NORTH, SOUTH, EAST, WEST }
         [SerializeField] private DoorDirection doorDirection = DoorDirection.UNDEFINED;
 
@@ -49,6 +51,18 @@ namespace DungeonCrawler_Chaniel
             else
             {
                 doorDirection = DoorDirection.UNDEFINED;    
+            }
+        }
+
+        private void Update()
+        {
+            if (otherDoor == null)
+            {
+                spriteRenderer.enabled = true;
+            }
+            else if (otherDoor)
+            {
+                spriteRenderer.enabled = false;
             }
         }
 

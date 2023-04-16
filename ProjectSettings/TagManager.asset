@@ -13,6 +13,7 @@ TagManager:
   - AdjacencyTrigger
   - EnemyBullet
   - Enemy
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX
@@ -23,8 +24,8 @@ TagManager:
   - Player
   - ' Player Bullet'
   - Golem
-  - 
-  - 
+  - EnemyBullet
+  - Enemy
   - 
   - 
   - 

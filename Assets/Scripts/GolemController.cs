@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace DungeonCrawler_Chaniel
 {
@@ -12,6 +13,8 @@ namespace DungeonCrawler_Chaniel
         public float bulletSpeed = 5f;
         public float bulletDistanceFromGolem = 0.5f;
         //public float bulletCooldown = 1f;
+        public int golemFuel = 100;
+        public int killFuelGain = 10;
 
 
         public Rigidbody2D golemRigidbody;
@@ -20,6 +23,10 @@ namespace DungeonCrawler_Chaniel
 
         [SerializeField] private Collider2D entryCollider;
         [SerializeField] private GameObject bullet;
+        [SerializeField] private Slider fuelBar;
+
+        private float nextFuelReduction;
+        [SerializeField] private float timeBetweenFuelReduction;
 
         public bool golemActivated {get; set;}
 
@@ -31,6 +38,14 @@ namespace DungeonCrawler_Chaniel
 
         private void Update()
         {
+            if (Time.time > nextFuelReduction)
+            {
+                nextFuelReduction = Time.time + timeBetweenFuelReduction;
+                ReduceFuel(1);
+            }
+
+            ChangeFuelLevelSlider();
+
             if (PlayerCharacterManager.player1 != null && PlayerCharacterManager.player1.GetComponent<CharacterController>().inGolem)
             {
                 GolemMove();
@@ -90,6 +105,30 @@ namespace DungeonCrawler_Chaniel
             {
                 collision.gameObject.GetComponent<CharacterController>().isInGolemTrigger = false;
             }
+        }
+        public void ReduceFuel(int damage)
+        {
+            if (golemActivated)
+            {
+                golemFuel -= damage;
+            }
+        }
+        public void IncreaseFuel(int damage)
+        {
+            if (golemActivated)
+            {
+                golemFuel += damage;
+            }
+        }
+
+        private void ChangeFuelLevelSlider()
+        {
+            fuelBar.value = golemFuel;
+        }
+
+        public void OnEnemyKill()
+        {
+            golemFuel += killFuelGain;
         }
     }
 }

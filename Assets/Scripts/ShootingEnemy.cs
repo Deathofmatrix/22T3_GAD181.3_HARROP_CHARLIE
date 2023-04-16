@@ -7,9 +7,10 @@ namespace DungeonCrawler_Chaniel
     public class ShootingEnemy : MonoBehaviour
     {
         public float speed;
-        public float turnSpeed;
+        //public float turnSpeed;
         public Transform target;
         public float minimumDistance;
+        public float lookDistance;
         [SerializeField] private Rigidbody2D rigidBody2D;
         [SerializeField] float time;
         [SerializeField] Vector3 direction;
@@ -18,16 +19,25 @@ namespace DungeonCrawler_Chaniel
         public float timeBetweenShots;
         [SerializeField] private float nextShotTime;
 
+        private void Start()
+        {
+            target = PlayerCharacterManager.golem.transform;
+        }
+
         private void FixedUpdate()
         {
             time = Time.time;
             direction = (target.transform.position - rigidBody2D.transform.position).normalized;
 
-            if (Time.time > nextShotTime)
+
+            if (Vector2.Distance(transform.position, target.position) < lookDistance)
             {
-                nextShotTime = Time.time + timeBetweenShots;
-                GameObject newBullet = Instantiate(projectile, transform.position, Quaternion.identity);
-                newBullet.GetComponent<Rigidbody2D>().velocity = direction * speed;
+                if (Time.time > nextShotTime)
+                {
+                    nextShotTime = Time.time + timeBetweenShots;
+                    GameObject newBullet = Instantiate(projectile, transform.position, Quaternion.identity);
+                    newBullet.GetComponent<Rigidbody2D>().velocity = direction * speed;
+                }
             }
 
             if (Vector2.Distance(transform.position, target.position) < minimumDistance)
@@ -40,6 +50,12 @@ namespace DungeonCrawler_Chaniel
 
                 //rigidBody2D.MoveRotation(Quaternion.RotateTowards(transform.rotation, enemyRotation, turnSpeed));
             }
+        }
+
+        private void OnDestroy()
+        {
+            GolemController golemScript = PlayerCharacterManager.golem.GetComponent<GolemController>();
+            golemScript.OnEnemyKill();
         }
     }
 }

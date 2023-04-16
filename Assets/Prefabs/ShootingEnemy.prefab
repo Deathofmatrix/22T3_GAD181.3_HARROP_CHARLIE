@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5178937015342279515}
   - component: {fileID: 116903783228718323}
   - component: {fileID: 6238399663802263539}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ShootingEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -127,10 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4950826e0b64bd14d97494319b92269b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  turnSpeed: 30
+  speed: 3
   target: {fileID: 0}
   minimumDistance: 5
+  lookDistance: 10
   rigidBody2D: {fileID: 6238399663802263539}
   time: 0
   direction: {x: 0, y: 0, z: 0}

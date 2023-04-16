@@ -10,6 +10,7 @@ namespace DungeonCrawler_Chaniel
         //false --> enemy bullet
         Vector3 targetPosition;
         public float speed;
+        public int bulletDamage;
 
         private void Start()
         {
@@ -29,6 +30,12 @@ namespace DungeonCrawler_Chaniel
 
             if (!isPlayerBullet)
             {
+                if (collision.gameObject.CompareTag("Golem"))
+                {
+                    GolemController golemScript = collision.gameObject.GetComponent<GolemController>();
+                    golemScript.ReduceFuel(bulletDamage);
+                    Destroy(gameObject);
+                }
             }
         }
     }
