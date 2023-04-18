@@ -9,6 +9,7 @@ namespace DungeonCrawler_Chaniel
     {
         public PolygonCollider2D otherCameraBounds;
         public Collider2D otherDoor;
+        public Collider2D roomDetector;
         public GameObject roomToMoveTo { get; set; }
         public CinemachineConfiner2D cameraConfiner;
         public int xPlayerSpawn;
@@ -63,6 +64,21 @@ namespace DungeonCrawler_Chaniel
             else if (otherDoor)
             {
                 spriteRenderer.enabled = false;
+            }
+        }
+
+        public void ActivateDeactivateDoors(bool activate)
+        {
+            if (activate)
+            {
+                roomDetector.enabled = true;
+                spriteRenderer.enabled = false;
+            }
+            else if (activate == false)
+            {
+                roomDetector.enabled = false;
+                otherDoor = null;
+                spriteRenderer.enabled = true;
             }
         }
 

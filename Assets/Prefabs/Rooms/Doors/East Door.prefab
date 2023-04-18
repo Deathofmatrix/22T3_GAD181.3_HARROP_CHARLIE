@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherCameraBounds: {fileID: 0}
   otherDoor: {fileID: 0}
+  roomDetector: {fileID: 6368134119844308353}
   cameraConfiner: {fileID: 0}
   xPlayerSpawn: 2
   yPlayerSpawn: 0

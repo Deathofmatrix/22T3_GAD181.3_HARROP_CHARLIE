@@ -24,6 +24,7 @@ namespace DungeonCrawler_Chaniel
             //room = GameObject.Find("Room1").GetComponent<Room>();
             //room.enemiesSpawned++;
             //sceneLoader = GameObject.Find("Scene Manager").GetComponent<SceneLoader>();
+            transform.parent.parent.gameObject.GetComponent<Room>().enemiesInRoom++;
         }
         private void FindTarget()
         {
@@ -84,6 +85,7 @@ namespace DungeonCrawler_Chaniel
 
         private void OnDestroy()
         {
+            transform.parent.parent.gameObject.GetComponent<Room>().enemiesInRoom--;
             if (PlayerCharacterManager.golem != null)
             {
                 ScoreManager.score++;

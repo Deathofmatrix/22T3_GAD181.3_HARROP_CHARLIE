@@ -54,40 +54,42 @@ namespace DungeonCrawler_Chaniel
 
             //parentRoom = this.transform.parent.parent.gameObject;
             //Room parentRoomScript = parentRoom.GetComponent<Room>();
-
-            if (spawnedRoom == false)
+            if (roomTemplates.roomsToSpawn > roomTemplates.rooms.Count)
             {
-                switch (openingDirection)
+                if (spawnedRoom == false)
                 {
-                    case OpeningDirection.TOP:
-                        rand = Random.Range(0, roomTemplates.bottomRooms.Length);
-                        GameObject newRoomT = Instantiate(roomTemplates.bottomRooms[rand], transform.position, roomTemplates.bottomRooms[rand].transform.rotation);
-                        newRoomT.transform.parent = mainGrid.transform;
-                        //parentRoomScript.adjacentRooms.Add(newRoomT);
-                        break;
-                    case OpeningDirection.BOTTOM:
-                        rand = Random.Range(0, roomTemplates.topRooms.Length);
-                        GameObject newRoomB = Instantiate(roomTemplates.topRooms[rand], transform.position, roomTemplates.topRooms[rand].transform.rotation);
-                        newRoomB.transform.parent = mainGrid.transform;
-                        //parentRoomScript.adjacentRooms.Add(newRoomB);
-                        break;
-                    case OpeningDirection.RIGHT:
-                        rand = Random.Range(0, roomTemplates.leftRooms.Length);
-                        GameObject newRoomR = Instantiate(roomTemplates.leftRooms[rand], transform.position, roomTemplates.leftRooms[rand].transform.rotation);
-                        newRoomR.transform.parent = mainGrid.transform;
-                        //parentRoomScript.adjacentRooms.Add(newRoomR);
-                        break;
-                    case OpeningDirection.LEFT:
-                        rand = Random.Range(0, roomTemplates.rightRooms.Length);
-                        GameObject newRoomL = Instantiate(roomTemplates.rightRooms[rand], transform.position, roomTemplates.rightRooms[rand].transform.rotation);
-                        newRoomL.transform.parent = mainGrid.transform;
-                        //parentRoomScript.adjacentRooms.Add(newRoomL);
-                        break;
-                    case OpeningDirection.UNDEFINED:
-                        Debug.Log("OPENING DIRECTION NOT DEFINED!");
-                        break;
+                    switch (openingDirection)
+                    {
+                        case OpeningDirection.TOP:
+                            rand = Random.Range(0, roomTemplates.bottomRooms.Length);
+                            GameObject newRoomT = Instantiate(roomTemplates.bottomRooms[rand], transform.position, roomTemplates.bottomRooms[rand].transform.rotation);
+                            newRoomT.transform.parent = mainGrid.transform;
+                            //parentRoomScript.adjacentRooms.Add(newRoomT);
+                            break;
+                        case OpeningDirection.BOTTOM:
+                            rand = Random.Range(0, roomTemplates.topRooms.Length);
+                            GameObject newRoomB = Instantiate(roomTemplates.topRooms[rand], transform.position, roomTemplates.topRooms[rand].transform.rotation);
+                            newRoomB.transform.parent = mainGrid.transform;
+                            //parentRoomScript.adjacentRooms.Add(newRoomB);
+                            break;
+                        case OpeningDirection.RIGHT:
+                            rand = Random.Range(0, roomTemplates.leftRooms.Length);
+                            GameObject newRoomR = Instantiate(roomTemplates.leftRooms[rand], transform.position, roomTemplates.leftRooms[rand].transform.rotation);
+                            newRoomR.transform.parent = mainGrid.transform;
+                            //parentRoomScript.adjacentRooms.Add(newRoomR);
+                            break;
+                        case OpeningDirection.LEFT:
+                            rand = Random.Range(0, roomTemplates.rightRooms.Length);
+                            GameObject newRoomL = Instantiate(roomTemplates.rightRooms[rand], transform.position, roomTemplates.rightRooms[rand].transform.rotation);
+                            newRoomL.transform.parent = mainGrid.transform;
+                            //parentRoomScript.adjacentRooms.Add(newRoomL);
+                            break;
+                        case OpeningDirection.UNDEFINED:
+                            Debug.Log("OPENING DIRECTION NOT DEFINED!");
+                            break;
+                    }
+                    spawnedRoom = true;
                 }
-                spawnedRoom = true;
             }
             
         }

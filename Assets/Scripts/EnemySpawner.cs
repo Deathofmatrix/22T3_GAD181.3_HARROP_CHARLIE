@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 namespace DungeonCrawler_Chaniel
@@ -38,17 +39,48 @@ namespace DungeonCrawler_Chaniel
         public float enemiesToSpawn;
         [SerializeField] private float minDistanceFromPlayer;
 
+        public float timeBetweenWaves;
+        private float nextBossRoomWave;
+
+        private void Start()
+        {
+            timeBetweenWaves = 3;
+        }
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.CompareTag("Golem"))
             {
-                Debug.Log("Golem Entered Room");
-                for (int i = 0; i < enemiesToSpawn; i++)
+                if (transform.parent.gameObject.GetComponent<Room>().isBossRoom == false)
                 {
-                    Vector2 spawnPosition = GetRandomSpawnPosition();
-                    Instantiate(RandomiseEnemy(), spawnPosition, Quaternion.identity);
+                    Debug.Log("Golem Entered Room");
+                    SpawnWave();
+                    enemiesToSpawn = 0;
                 }
-                enemiesToSpawn = 0;
+            }
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (collision.gameObject.CompareTag("Golem"))
+            {
+                if (transform.parent.gameObject.GetComponent<Room>().isBossRoom == true)
+                {
+                    if (Time.time >= nextBossRoomWave)
+                    {
+                        nextBossRoomWave = Time.time + timeBetweenWaves;
+                        SpawnWave();
+                    }
+                }
+            }
+        }
+
+        private void SpawnWave()
+        {
+            for (int i = 0; i < enemiesToSpawn; i++)
+            {
+                Vector2 spawnPosition = GetRandomSpawnPosition();
+                GameObject newEnemy = Instantiate(RandomiseEnemy(), spawnPosition, Quaternion.identity);
+                newEnemy.transform.parent = this.transform;
             }
         }
         //public void OnTriggerEnter(Collider other)

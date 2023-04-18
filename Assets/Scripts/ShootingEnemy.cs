@@ -23,6 +23,7 @@ namespace DungeonCrawler_Chaniel
 
         private void Start()
         {
+            transform.parent.parent.gameObject.GetComponent<Room>().enemiesInRoom++;
         }
 
         private void FindTarget()
@@ -86,6 +87,7 @@ namespace DungeonCrawler_Chaniel
 
         private void OnDestroy()
         {
+            transform.parent.parent.gameObject.GetComponent<Room>().enemiesInRoom--;
             if (PlayerCharacterManager.golem != null)
             {
                 GolemController golemScript = PlayerCharacterManager.golem.GetComponent<GolemController>();

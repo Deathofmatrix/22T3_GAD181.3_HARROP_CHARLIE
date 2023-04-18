@@ -506,6 +506,8 @@ MonoBehaviour:
   - {fileID: 949289813}
   - {fileID: 1984160148}
   allDoorInRoom: []
+  isBossRoom: 0
+  isBossDead: 0
 --- !u!1001 &417442838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7061,8 +7063,10 @@ MonoBehaviour:
   - {fileID: 6265225419825668842, guid: 8cbb3f2db1e06604ba71bb6988e38042, type: 3}
   closedRoom: {fileID: 6265225419825668842, guid: 138fa33914f6910478f0d1a4c8410ac6, type: 3}
   rooms: []
-  waitTime: 2
-  boss: {fileID: 5728628287954506966, guid: aa9c969c772f860459be5821a3db2a65, type: 3}
+  waitTime: 3
+  spawnedBoss: 0
+  boss: {fileID: 3733688942727427790, guid: 98f980f46464a7c4f94d41832f37b2ec, type: 3}
+  roomsToSpawn: 10
 --- !u!1 &1227284934
 GameObject:
   m_ObjectHideFlags: 0
@@ -7115,7 +7119,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -11398,8 +11402,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -107.34131, y: -7.699951}
   m_SizeDelta: {x: 200, y: 27.23}
+=======
+  m_AnchoredPosition: {x: -215, y: -13}
+  m_SizeDelta: {x: 400, y: 50}
+>>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1451732169
 GameObject:
