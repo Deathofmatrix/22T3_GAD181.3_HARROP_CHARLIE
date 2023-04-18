@@ -25,13 +25,21 @@ namespace DungeonCrawler_Chaniel
             {
                 for (int i = 0; i < rooms.Count; i++)
                 {
+
                     if (i == rooms.Count - 1)
                     {
                         Instantiate(boss, rooms[i].transform.position, Quaternion.identity);
                         spawnedBoss = true;
                     }
+
+                    if (i > 0 && i < rooms.Count - 1)
+                    {
+                        rooms[i].GetComponentInChildren<EnemySpawner>().enemiesToSpawn = Random.Range(i, i++);
+                    }
+
                 }
             }
+
             else
             {
                 waitTime -= Time.deltaTime;

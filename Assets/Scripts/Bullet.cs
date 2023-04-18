@@ -37,6 +37,15 @@ namespace DungeonCrawler_Chaniel
                     Destroy(gameObject);
                 }
             }
+            
+            if (isPlayerBullet)
+            {
+                if (collision.gameObject.CompareTag("Enemy"))
+                {
+                    Destroy(collision.gameObject);
+                    Destroy(gameObject);
+                }
+            }
         }
     }
 }

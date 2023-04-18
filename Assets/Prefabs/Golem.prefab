@@ -147,13 +147,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28cde6e94f7b6e54d82eedfed180bd5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  bulletSpeed: 5
+  moveSpeed: 3
+  bulletSpeed: 8
   bulletDistanceFromGolem: 0.5
+  golemFuel: 100
+  golemMaxFuel: 100
+  killFuelGain: 10
+  golemRecharging: 0
   golemRigidbody: {fileID: 1276854188745948480}
   golemShootingDirection: {x: 0, y: 0}
   entryCollider: {fileID: 1276854190159963765}
+  spriteRenderer: {fileID: 1276854188745948487}
+  golemActiveSprite: {fileID: 21300000, guid: cb77e3a6bf5ea844b981afdfc71da9fe, type: 3}
+  golemInactiveSprite: {fileID: 21300000, guid: 8633d03943c31b0459ed44b72ca6f14b, type: 3}
   bullet: {fileID: 5728628287954506966, guid: a4dabd7d3c771ab419c18bc79847b424, type: 3}
+  fuelBar: {fileID: 0}
+  timeBetweenFuelReduction: 0.5
+  timeBetweenFuelRecharges: 0.1
 --- !u!1 &1276854190159963767
 GameObject:
   m_ObjectHideFlags: 0

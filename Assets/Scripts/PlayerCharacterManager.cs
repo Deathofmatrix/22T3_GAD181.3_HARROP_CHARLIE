@@ -10,7 +10,7 @@ namespace DungeonCrawler_Chaniel
         public static int totalPlayersInGame;
         public int publicTotalPlayersInGame;
 
-        public List<GameObject> allPlayers = new List<GameObject>(2);
+        public static List<GameObject> allPlayers = new List<GameObject>(2);
 
         public static GameObject player1;
         public static GameObject player2;

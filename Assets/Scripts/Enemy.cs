@@ -24,22 +24,51 @@ namespace DungeonCrawler_Chaniel
             //room = GameObject.Find("Room1").GetComponent<Room>();
             //room.enemiesSpawned++;
             //sceneLoader = GameObject.Find("Scene Manager").GetComponent<SceneLoader>();
-            target = PlayerCharacterManager.golem.transform;
+        }
+        private void FindTarget()
+        {
+            if (PlayerCharacterManager.golem.GetComponent<GolemController>().golemActivated == true)
+            {
+                target = PlayerCharacterManager.golem.transform;
+            }
+            else if (PlayerCharacterManager.golem.GetComponent<GolemController>().golemActivated == false && PlayerCharacterManager.allPlayers != null)
+            {
+                float closestDistance = Mathf.Infinity;
+
+                foreach (GameObject gameObject in PlayerCharacterManager.allPlayers)
+                {
+                    float distance = Vector3.Distance(gameObject.transform.position, transform.position);
+
+                    if (distance < closestDistance)
+                    {
+                        closestDistance = distance;
+                        target = gameObject.transform;
+                    }
+                }
+            }
+        }
+
+        private void Update()
+        {
+            FindTarget();
         }
 
         void FixedUpdate()
         {
-            direction = (target.transform.position - rigidBody2D.transform.position).normalized;
-            rigidBody2D.MovePosition(rigidBody2D.transform.position + direction * speed * Time.fixedDeltaTime);
+            if (target != null)
+            {
+                direction = (target.transform.position - rigidBody2D.transform.position).normalized;
+                rigidBody2D.MovePosition(rigidBody2D.transform.position + direction * speed * Time.fixedDeltaTime);
+            }
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.CompareTag("PlayerBullet"))
-            {
-                Destroy(collision.gameObject);
-                Destroy(gameObject);
-            }
+            //if (collision.gameObject.CompareTag("PlayerBullet"))
+            //{
+            //    Destroy(collision.gameObject);
+            //    Destroy(gameObject);
+            //}
             if (collision.gameObject.CompareTag("Golem"))
             {
                 //ScoreManager.finalScore = ScoreManager.score;
@@ -49,15 +78,18 @@ namespace DungeonCrawler_Chaniel
             }
             if (collision.gameObject.CompareTag("Player"))
             {
-
+                //kill player?
             }
         }
 
         private void OnDestroy()
         {
-            ScoreManager.score++;
-            GolemController golemScript = PlayerCharacterManager.golem.GetComponent<GolemController>();
-            golemScript.OnEnemyKill();
+            if (PlayerCharacterManager.golem != null)
+            {
+                ScoreManager.score++;
+                GolemController golemScript = PlayerCharacterManager.golem.GetComponent<GolemController>();
+                golemScript.OnEnemyKill();
+            }  
         }
     }
 }

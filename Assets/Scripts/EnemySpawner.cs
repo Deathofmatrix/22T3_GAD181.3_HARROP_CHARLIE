@@ -35,17 +35,21 @@ namespace DungeonCrawler_Chaniel
 
         public GameObject[] enemyPrefabs;
         public BoxCollider2D spawnArea;
-        public float enemiesToSpawn = 7f;
+        public float enemiesToSpawn;
         [SerializeField] private float minDistanceFromPlayer;
-        private void Start()
+
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.Log("Golem Entered Room");
-            for (int i = 0; i < enemiesToSpawn; i++)
+            if (collision.gameObject.CompareTag("Golem"))
             {
-                Vector2 spawnPosition = GetRandomSpawnPosition();
-                Instantiate(RandomiseEnemy(), spawnPosition, Quaternion.identity);
+                Debug.Log("Golem Entered Room");
+                for (int i = 0; i < enemiesToSpawn; i++)
+                {
+                    Vector2 spawnPosition = GetRandomSpawnPosition();
+                    Instantiate(RandomiseEnemy(), spawnPosition, Quaternion.identity);
+                }
+                enemiesToSpawn = 0;
             }
-            enemiesToSpawn = 0;
         }
         //public void OnTriggerEnter(Collider other)
         //{

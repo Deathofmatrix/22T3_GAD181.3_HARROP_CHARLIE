@@ -14,19 +14,28 @@ namespace DungeonCrawler_Chaniel
         public float bulletDistanceFromGolem = 0.5f;
         //public float bulletCooldown = 1f;
         public int golemFuel = 100;
+        public int golemMaxFuel = 100;
         public int killFuelGain = 10;
 
+        [SerializeField] private bool golemRecharging = false;
 
         public Rigidbody2D golemRigidbody;
         private Vector2 golemMovement;
         [SerializeField] private Vector2 golemShootingDirection;
 
         [SerializeField] private Collider2D entryCollider;
+        [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private Sprite golemActiveSprite;
+        [SerializeField] private Sprite golemInactiveSprite;
+
         [SerializeField] private GameObject bullet;
         [SerializeField] private Slider fuelBar;
 
         private float nextFuelReduction;
         [SerializeField] private float timeBetweenFuelReduction;
+        
+        private float nextFuelRecharge;
+        [SerializeField] private float timeBetweenFuelRecharges;
 
         public bool golemActivated {get; set;}
 
@@ -38,6 +47,18 @@ namespace DungeonCrawler_Chaniel
 
         private void Update()
         {
+            RechargeGolem();
+
+            if (golemFuel <= 0 && golemRecharging == false)
+            {
+                DeactivateGolem();
+            }
+
+            if (golemFuel == golemMaxFuel)
+            {
+                ActivateGolem();
+            }
+
             if (Time.time > nextFuelReduction)
             {
                 nextFuelReduction = Time.time + timeBetweenFuelReduction;
@@ -115,20 +136,50 @@ namespace DungeonCrawler_Chaniel
         }
         public void IncreaseFuel(int damage)
         {
-            if (golemActivated)
-            {
-                golemFuel += damage;
-            }
+            golemFuel += damage;
         }
 
         private void ChangeFuelLevelSlider()
         {
             fuelBar.value = golemFuel;
+            if (golemFuel > golemMaxFuel)
+            {
+                golemFuel = golemMaxFuel;
+            }
         }
 
         public void OnEnemyKill()
         {
             golemFuel += killFuelGain;
+        }
+
+        private void DeactivateGolem()
+        {
+            foreach (GameObject player in PlayerCharacterManager.allPlayers)
+            {
+                player.GetComponent<CharacterController>().GetOutOfGolem();
+            }
+            entryCollider.enabled = false;
+            golemActivated = false;
+            spriteRenderer.sprite = golemInactiveSprite;
+            golemRecharging = true;
+        }
+
+        private void ActivateGolem()
+        {
+            entryCollider.enabled = true;
+            spriteRenderer.sprite = golemActiveSprite;
+            golemRecharging = false;
+        }
+
+        private void RechargeGolem()
+        {
+            if (Time.time > nextFuelRecharge && golemRecharging)
+            {
+                nextFuelRecharge = Time.time + timeBetweenFuelRecharges;
+                IncreaseFuel(1);
+                Debug.Log("recharging");
+            }
         }
     }
 }
