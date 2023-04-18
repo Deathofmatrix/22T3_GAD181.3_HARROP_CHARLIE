@@ -314,6 +314,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4244072257529955014, guid: 3b608cc28e89f784d98e46c9912d1964, type: 3}
   m_PrefabInstance: {fileID: 1937786672}
   m_PrefabAsset: {fileID: 0}
+--- !u!60 &287214719 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2325862451529698856, guid: 592063689d7937e4096c3b31d744b894, type: 3}
+  m_PrefabInstance: {fileID: 4205061441755471204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &291983968
 GameObject:
   m_ObjectHideFlags: 0
@@ -7289,7 +7294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BoundingShape2D: {fileID: 2049952720}
+  m_BoundingShape2D: {fileID: 287214719}
   m_Damping: 0.5
   m_MaxWindowSize: -1
 --- !u!4 &1307859283 stripped
@@ -11393,7 +11398,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -107.34134, y: -7.700012}
+  m_AnchoredPosition: {x: -107.34131, y: -7.699951}
   m_SizeDelta: {x: 200, y: 27.23}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1451732169
