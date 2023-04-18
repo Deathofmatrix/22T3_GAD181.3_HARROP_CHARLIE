@@ -11402,13 +11402,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-<<<<<<< Updated upstream
-  m_AnchoredPosition: {x: -107.34131, y: -7.699951}
-  m_SizeDelta: {x: 200, y: 27.23}
-=======
   m_AnchoredPosition: {x: -215, y: -13}
   m_SizeDelta: {x: 400, y: 50}
->>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1451732169
 GameObject:
