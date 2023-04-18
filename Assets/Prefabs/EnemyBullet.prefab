@@ -100,7 +100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerBullet: 0
-  speed: 4
   bulletDamage: 10
 --- !u!50 &-8416232229532146854
 Rigidbody2D:

@@ -84,11 +84,16 @@ namespace DungeonCrawler_Chaniel
         {
             if (callbackContext.started)
             {
-                PlayerCharacterManager.golem.GetComponent<GolemController>().GolemShoot();
+                PlayerCharacterManager.golem.GetComponent<GolemController>().StartShooting();
+            }
+            if (callbackContext.performed)
+            {
+                PlayerCharacterManager.golem.GetComponent<GolemController>().isShooting = true;
                 Debug.Log("shoot");
             }
             else if (callbackContext.canceled)
             {
+                PlayerCharacterManager.golem.GetComponent<GolemController>().isShooting = false;
                 //PlayerCharacterManager.golem.GetComponent<GolemController>().GolemShootStop();
             }
         }

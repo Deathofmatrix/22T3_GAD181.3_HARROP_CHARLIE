@@ -8,7 +8,6 @@ namespace DungeonCrawler_Chaniel
 {
     public class Enemy : MonoBehaviour
     {
-        //[SerializeField] private float enemySpeed;
         [SerializeField] private SceneLoader sceneLoader;
         public Room room;
 
@@ -23,7 +22,7 @@ namespace DungeonCrawler_Chaniel
         {
             //room = GameObject.Find("Room1").GetComponent<Room>();
             //room.enemiesSpawned++;
-            //sceneLoader = GameObject.Find("Scene Manager").GetComponent<SceneLoader>();
+            sceneLoader = GameObject.Find("Scene Manager").GetComponent<SceneLoader>();
             transform.parent.parent.gameObject.GetComponent<Room>().enemiesInRoom++;
         }
         private void FindTarget()
@@ -79,7 +78,7 @@ namespace DungeonCrawler_Chaniel
             }
             if (collision.gameObject.CompareTag("Player"))
             {
-                //kill player?
+                sceneLoader.LoadThisScene("GameOver");
             }
         }
 

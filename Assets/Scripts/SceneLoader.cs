@@ -11,8 +11,6 @@ namespace DungeonCrawler_Chaniel
         [SerializeField] private string sceneToLoadName;
         [SerializeField] private string mainScene = "MainScene";
 
-        [SerializeField] private TMP_Text scoreText;
-
         public void LoadThisScene(string sceneToLoad)
         {
             SceneManager.LoadScene(sceneToLoad);
@@ -25,7 +23,6 @@ namespace DungeonCrawler_Chaniel
 
         private void Start()
         {
-            scoreText.text = "Your Score: " + ScoreManager.finalScore.ToString();
         }
     }
 }

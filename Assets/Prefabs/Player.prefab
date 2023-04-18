@@ -107,7 +107,7 @@ MonoBehaviour:
     target: {fileID: 8019892184741028022}
     weight: 1
     radius: 3
-  moveSpeed: 4
+  moveSpeed: 6
   characterRigidbody: {fileID: 8019892184741028023}
 --- !u!50 &8019892184741028023
 Rigidbody2D:

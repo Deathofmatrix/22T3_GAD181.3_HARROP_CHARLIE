@@ -38,7 +38,6 @@ namespace DungeonCrawler_Chaniel
             }
         }
 
-
         private void FindDoorsInRoom()
         {
             foreach (Transform child in transform)

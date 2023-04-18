@@ -65,6 +65,8 @@ namespace DungeonCrawler_Chaniel
             {
                 if (transform.parent.gameObject.GetComponent<Room>().isBossRoom == true)
                 {
+                    gameObject.transform.parent.Find("Boss(Clone)").GetComponent<Boss>().isActive = true;
+
                     if (Time.time >= nextBossRoomWave)
                     {
                         nextBossRoomWave = Time.time + timeBetweenWaves;

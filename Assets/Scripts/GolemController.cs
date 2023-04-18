@@ -22,6 +22,10 @@ namespace DungeonCrawler_Chaniel
         public Rigidbody2D golemRigidbody;
         private Vector2 golemMovement;
         [SerializeField] private Vector2 golemShootingDirection;
+        public bool isShooting;
+        public float timeBetweenShots = 1f;
+        [SerializeField] private float timeSinceLastShot = 0f;
+        [SerializeField] private bool canShoot = true;
 
         [SerializeField] private Collider2D entryCollider;
         [SerializeField] private SpriteRenderer spriteRenderer;
@@ -71,9 +75,14 @@ namespace DungeonCrawler_Chaniel
             {
                 GolemMove();
             }
-            else if (PlayerCharacterManager.player2 != null && PlayerCharacterManager.player2.GetComponent<CharacterController>().inGolem)
+            //else if (PlayerCharacterManager.player2 != null && PlayerCharacterManager.player2.GetComponent<CharacterController>().inGolem)
+            //{
+            //    //GolemShoot();
+            //}
+
+            if (isShooting)
             {
-                //GolemShoot();
+                GolemShoot();
             }
         }
 
@@ -85,13 +94,33 @@ namespace DungeonCrawler_Chaniel
 
         public void GolemShoot()
         {
-            golemShootingDirection = PlayerCharacterManager.player2.GetComponent<CharacterController>().playerMovement;
-
-            if (PlayerCharacterManager.player2.GetComponent<CharacterController>().inGolem && golemShootingDirection != new Vector2(0,0))
+            if (canShoot)
             {
-                GameObject newbullet = Instantiate(bullet, golemRigidbody.position + golemShootingDirection * bulletDistanceFromGolem, transform.rotation);
-                newbullet.GetComponent<Rigidbody2D>().velocity = golemShootingDirection.normalized * bulletSpeed;
+                golemShootingDirection = PlayerCharacterManager.player2.GetComponent<CharacterController>().playerMovement;
+
+                if (PlayerCharacterManager.player2.GetComponent<CharacterController>().inGolem && golemShootingDirection != new Vector2(0, 0))
+                {
+                    GameObject newbullet = Instantiate(bullet, golemRigidbody.position + golemShootingDirection * bulletDistanceFromGolem, transform.rotation);
+                    newbullet.GetComponent<Rigidbody2D>().velocity = golemShootingDirection.normalized * bulletSpeed;
+
+                    canShoot = false;
+                    timeSinceLastShot = 0f;
+                }
             }
+            
+            timeSinceLastShot += Time.deltaTime;
+
+            if (timeSinceLastShot >= timeBetweenShots)
+            {
+                canShoot = true;
+            }
+            
+        }
+
+        public void StartShooting()
+        {
+            canShoot = true;
+            timeSinceLastShot = 0f;
         }
 
         private void FixedUpdate()

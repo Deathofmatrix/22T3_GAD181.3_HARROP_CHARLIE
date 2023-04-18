@@ -4019,10 +4019,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c011d28a38c399947a733953f68b10d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesSpawned: 0
-  enemiesToSpawn: 0
+  enemiesInRoom: 0
   spawners: []
   allDoorInRoom: []
+  isBossRoom: 0
+  isBossDead: 0
 --- !u!114 &2997068946136012654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5382,7 +5383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590052807808839216, guid: 0f35817a0f431164e8955266f2246038, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.24237967
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6590052807808839216, guid: 0f35817a0f431164e8955266f2246038, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5448,7 +5449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6075813016211489135, guid: 40ce39399ebb93c469d9452a7d629a0e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.24237967
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6075813016211489135, guid: 40ce39399ebb93c469d9452a7d629a0e, type: 3}
       propertyPath: m_LocalPosition.y

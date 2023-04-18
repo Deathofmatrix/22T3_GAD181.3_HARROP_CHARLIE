@@ -33,27 +33,8 @@ namespace DungeonCrawler_Chaniel
             roomTemplates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
             Invoke("SpawnRoom", 0.1f);
         }
-        private void SpawnRoom()
+        public void SpawnRoom()
         {
-            //if (openingDirection == 1)
-            //{
-            //    //need to spawn bottom door
-            //}
-            //else if (openingDirection == 2)
-            //{
-            //    //top
-            //}
-            //else if (openingDirection == 3)
-            //{
-            //    //left
-            //}
-            //else if (openingDirection == 4)
-            //{
-            //    //right
-            //}
-
-            //parentRoom = this.transform.parent.parent.gameObject;
-            //Room parentRoomScript = parentRoom.GetComponent<Room>();
             if (roomTemplates.roomsToSpawn > roomTemplates.rooms.Count)
             {
                 if (spawnedRoom == false)

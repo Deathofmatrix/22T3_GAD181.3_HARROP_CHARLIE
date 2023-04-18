@@ -6,15 +6,18 @@ namespace DungeonCrawler_Chaniel
 {
     public class Bullet : MonoBehaviour
     {
+        private SceneLoader sceneLoader;
         [SerializeField] private bool isPlayerBullet;
-        //false --> enemy bullet
-        Vector3 targetPosition;
-        public float speed;
+        ////false --> enemy bullet
+        
+        //Vector3 targetPosition;
+        //public float speed;
         public int bulletDamage;
 
         private void Start()
         {
-            targetPosition = FindObjectOfType<GolemController>().transform.position;
+            sceneLoader = GameObject.Find("Scene Manager").GetComponent<SceneLoader>();
+            //targetPosition = FindObjectOfType<GolemController>().transform.position;
         }
         private void OnBecameInvisible()
         {
@@ -36,6 +39,10 @@ namespace DungeonCrawler_Chaniel
                     golemScript.ReduceFuel(bulletDamage);
                     Destroy(gameObject);
                 }
+                else if (collision.gameObject.CompareTag("Player"))
+                {
+                    sceneLoader.LoadThisScene("GameOver");
+                }
             }
             
             if (isPlayerBullet)
@@ -44,6 +51,11 @@ namespace DungeonCrawler_Chaniel
                 {
                     Destroy(collision.gameObject);
                     Destroy(gameObject);
+                }
+                if (collision.gameObject.CompareTag("Boss"))
+                {
+                    Destroy(gameObject);
+                    //reduce boss health
                 }
             }
         }

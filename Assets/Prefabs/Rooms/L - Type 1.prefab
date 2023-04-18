@@ -3899,10 +3899,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c011d28a38c399947a733953f68b10d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesSpawned: 0
-  enemiesToSpawn: 0
+  enemiesInRoom: 0
   spawners: []
   allDoorInRoom: []
+  isBossRoom: 0
+  isBossDead: 0
 --- !u!114 &-5562021072741564581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4136,7 +4137,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 7
-      m_TileSpriteIndex: 7
+      m_TileSpriteIndex: 13
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -4406,7 +4407,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 12
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -4991,16 +4992,16 @@ Tilemap:
     m_Data: {fileID: -14692320, guid: 3ff1c6019c0956b4a985f8ada75d135e, type: 3}
   - m_RefCount: 20
     m_Data: {fileID: 2010139533, guid: 3ff1c6019c0956b4a985f8ada75d135e, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 1157238475, guid: 3ff1c6019c0956b4a985f8ada75d135e, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 3
     m_Data: {fileID: -430673103, guid: 3ff1c6019c0956b4a985f8ada75d135e, type: 3}
   - m_RefCount: 5
     m_Data: {fileID: -1632261961, guid: 3ff1c6019c0956b4a985f8ada75d135e, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 240738004, guid: 3ff1c6019c0956b4a985f8ada75d135e, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 6
     m_Data: {fileID: 727918717, guid: 3ff1c6019c0956b4a985f8ada75d135e, type: 3}
   - m_RefCount: 9
@@ -5009,10 +5010,10 @@ Tilemap:
     m_Data: {fileID: -1034041176, guid: 3ff1c6019c0956b4a985f8ada75d135e, type: 3}
   - m_RefCount: 23
     m_Data: {fileID: -1418340023, guid: 3ff1c6019c0956b4a985f8ada75d135e, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 1157238475, guid: 3ff1c6019c0956b4a985f8ada75d135e, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 240738004, guid: 3ff1c6019c0956b4a985f8ada75d135e, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -717430922, guid: 3ff1c6019c0956b4a985f8ada75d135e, type: 3}
   m_TileMatrixArray:
@@ -5224,7 +5225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5403270094683972259, guid: a642c5958109d3b41b3acd9f590945a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.24238014
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5403270094683972259, guid: a642c5958109d3b41b3acd9f590945a7, type: 3}
       propertyPath: m_LocalPosition.z

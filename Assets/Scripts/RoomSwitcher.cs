@@ -86,9 +86,12 @@ namespace DungeonCrawler_Chaniel
         {
             if (collision.gameObject.CompareTag("Golem"))
             {
-                //roomToMoveTo.SetActive(true);
-                collision.gameObject.transform.position = new Vector2(otherDoor.transform.position.x + xPlayerSpawn, otherDoor.transform.position.y + yPlayerSpawn);
-                cameraConfiner.m_BoundingShape2D = otherCameraBounds;
+                if (PlayerCharacterManager.player1.GetComponent<CharacterController>().inGolem && PlayerCharacterManager.player2.GetComponent<CharacterController>().inGolem)
+                {
+                    //roomToMoveTo.SetActive(true);
+                    collision.gameObject.transform.position = new Vector2(otherDoor.transform.position.x + xPlayerSpawn, otherDoor.transform.position.y + yPlayerSpawn);
+                    cameraConfiner.m_BoundingShape2D = otherCameraBounds;
+                }
             }
         }
         private void OnTriggerStay2D(Collider2D collision)
