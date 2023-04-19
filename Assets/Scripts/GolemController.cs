@@ -22,7 +22,6 @@ namespace DungeonCrawler_Chaniel
         public Rigidbody2D golemRigidbody;
         private Vector2 golemMovement;
         [SerializeField] private Vector2 golemShootingDirection;
-        public bool isShooting;
         public float timeBetweenShots = 1f;
         [SerializeField] private float timeSinceLastShot = 0f;
         [SerializeField] private bool canShoot = true;
@@ -80,7 +79,7 @@ namespace DungeonCrawler_Chaniel
             //    //GolemShoot();
             //}
 
-            if (isShooting)
+            if (PlayerCharacterManager.player2 != null)
             {
                 GolemShoot();
             }
@@ -114,6 +113,11 @@ namespace DungeonCrawler_Chaniel
             {
                 canShoot = true;
             }
+            
+        }
+
+        public void GolemDash()
+        {
             
         }
 

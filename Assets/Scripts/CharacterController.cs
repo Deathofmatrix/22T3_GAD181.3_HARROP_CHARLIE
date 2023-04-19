@@ -20,6 +20,7 @@ namespace DungeonCrawler_Chaniel
 
         public float moveSpeed = 5f;
         public Rigidbody2D characterRigidbody;
+        public bool isShooting;
         public Vector2 playerMovement { get; set; }
         public bool isInGolemTrigger { get; set; }
         public bool inGolem { get; set; }
@@ -84,18 +85,18 @@ namespace DungeonCrawler_Chaniel
         {
             if (callbackContext.started)
             {
-                PlayerCharacterManager.golem.GetComponent<GolemController>().StartShooting();
+                //PlayerCharacterManager.golem.GetComponent<GolemController>().StartShooting();
             }
-            if (callbackContext.performed)
-            {
-                PlayerCharacterManager.golem.GetComponent<GolemController>().isShooting = true;
-                Debug.Log("shoot");
-            }
-            else if (callbackContext.canceled)
-            {
-                PlayerCharacterManager.golem.GetComponent<GolemController>().isShooting = false;
-                //PlayerCharacterManager.golem.GetComponent<GolemController>().GolemShootStop();
-            }
+            //if (callbackContext.performed)
+            //{
+            //    isShooting = true;
+            //    Debug.Log("shoot");
+            //}
+            //else if (callbackContext.canceled)
+            //{
+            //    isShooting = false;
+            //    //PlayerCharacterManager.golem.GetComponent<GolemController>().GolemShootStop();
+            //}
         }
 
         private void Update()

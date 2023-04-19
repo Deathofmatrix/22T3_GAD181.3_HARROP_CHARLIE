@@ -127,10 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4950826e0b64bd14d97494319b92269b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   target: {fileID: 0}
-  minimumDistance: 5
-  lookDistance: 10
+  minimumDistance: 8
+  lookDistance: 20
   rigidBody2D: {fileID: 6238399663802263539}
   time: 0
   direction: {x: 0, y: 0, z: 0}

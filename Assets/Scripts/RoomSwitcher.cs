@@ -12,6 +12,7 @@ namespace DungeonCrawler_Chaniel
         public Collider2D roomDetector;
         public GameObject roomToMoveTo { get; set; }
         public CinemachineConfiner2D cameraConfiner;
+        public CinemachineVirtualCamera virtualCamera;
         public int xPlayerSpawn;
         public int yPlayerSpawn;
 
@@ -23,6 +24,7 @@ namespace DungeonCrawler_Chaniel
         private void Start()
         {
             cameraConfiner = GameObject.Find("CM vcam1").GetComponent<CinemachineConfiner2D>();
+            virtualCamera = GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>();
 
             gameObject.tag = "Door";
             if (name == "North Door")
@@ -91,6 +93,7 @@ namespace DungeonCrawler_Chaniel
                     //roomToMoveTo.SetActive(true);
                     collision.gameObject.transform.position = new Vector2(otherDoor.transform.position.x + xPlayerSpawn, otherDoor.transform.position.y + yPlayerSpawn);
                     cameraConfiner.m_BoundingShape2D = otherCameraBounds;
+                    virtualCamera.Follow = otherCameraBounds.transform.parent.transform;
                 }
             }
         }
