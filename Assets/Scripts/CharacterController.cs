@@ -81,11 +81,14 @@ namespace DungeonCrawler_Chaniel
             }
         }
 
-        public void OnFire(InputAction.CallbackContext callbackContext)
+        public void OnDash(InputAction.CallbackContext callbackContext)
         {
             if (callbackContext.started)
             {
                 //PlayerCharacterManager.golem.GetComponent<GolemController>().StartShooting();
+
+                if (playerNumberEnum == PlayerNumberEnum.Player1)
+                PlayerCharacterManager.golem.GetComponent<GolemController>().GolemDash();
             }
             //if (callbackContext.performed)
             //{

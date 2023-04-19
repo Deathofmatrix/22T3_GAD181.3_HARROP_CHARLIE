@@ -24,12 +24,19 @@ namespace DungeonCrawler_Chaniel
         [SerializeField] private Vector2 golemShootingDirection;
         public float timeBetweenShots = 1f;
         [SerializeField] private float timeSinceLastShot = 0f;
-        [SerializeField] private bool canShoot = true;
+        private bool canShoot = true;
+
+        [SerializeField] private bool canDash = true;
+        [SerializeField] private bool isDashing;
+        [SerializeField] private float dashPower = 100f;
+        [SerializeField] private float dashTime = 0.2f;
+        [SerializeField] private float dashCooldown = 1f;
 
         [SerializeField] private Collider2D entryCollider;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private Sprite golemActiveSprite;
         [SerializeField] private Sprite golemInactiveSprite;
+        [SerializeField] private TrailRenderer dashTrail;
 
         [SerializeField] private GameObject bullet;
         [SerializeField] private Slider fuelBar;
@@ -50,6 +57,7 @@ namespace DungeonCrawler_Chaniel
 
         private void Update()
         {
+
             RechargeGolem();
 
             if (golemFuel <= 0 && golemRecharging == false)
@@ -70,6 +78,16 @@ namespace DungeonCrawler_Chaniel
 
             ChangeFuelLevelSlider();
 
+            if (PlayerCharacterManager.player2 != null)
+            {
+                GolemShoot();
+            }
+
+            if (isDashing)
+            {
+                return;
+            }
+
             if (PlayerCharacterManager.player1 != null && PlayerCharacterManager.player1.GetComponent<CharacterController>().inGolem)
             {
                 GolemMove();
@@ -78,10 +96,31 @@ namespace DungeonCrawler_Chaniel
             //{
             //    //GolemShoot();
             //}
+        }
 
-            if (PlayerCharacterManager.player2 != null)
+        private void FixedUpdate()
+        {
+            golemRigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+
+            //if (isDashing)
+            //{
+            //    return;
+            //}
+
+            if (golemActivated)
             {
-                GolemShoot();
+                if (PlayerCharacterManager.player1.GetComponent<CharacterController>().inGolem)
+                {
+                    golemRigidbody.constraints &= ~RigidbodyConstraints2D.FreezePosition;
+                    if (!isDashing)
+                    {
+                        golemRigidbody.MovePosition(golemRigidbody.position + golemMovement.normalized * moveSpeed * Time.fixedDeltaTime);
+                    }
+                    else if (isDashing)
+                    {
+                        golemRigidbody.MovePosition(golemRigidbody.position + golemMovement.normalized * dashPower * Time.fixedDeltaTime);
+                    }
+                }
             }
         }
 
@@ -118,7 +157,10 @@ namespace DungeonCrawler_Chaniel
 
         public void GolemDash()
         {
-            
+            if (canDash)
+            {
+                StartCoroutine(Dash());
+            }
         }
 
         public void StartShooting()
@@ -126,24 +168,7 @@ namespace DungeonCrawler_Chaniel
             canShoot = true;
             timeSinceLastShot = 0f;
         }
-
-        private void FixedUpdate()
-        {
-            golemRigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
-
-            if (golemActivated)
-            {
-                if (PlayerCharacterManager.player1.GetComponent<CharacterController>().inGolem)
-                {
-                    golemRigidbody.constraints &= ~RigidbodyConstraints2D.FreezePosition;
-                    golemRigidbody.MovePosition(golemRigidbody.position + golemMovement.normalized * moveSpeed * Time.fixedDeltaTime);
-                }
-            }
-            else
-            {
-                golemRigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
-            }
-        }
+      
 
         private void OnTriggerStay2D(Collider2D collision)
         {
@@ -213,6 +238,19 @@ namespace DungeonCrawler_Chaniel
                 IncreaseFuel(1);
                 Debug.Log("recharging");
             }
+        }
+
+        private IEnumerator Dash()
+        {
+            Debug.Log("started corountine");
+            canDash = false;
+            isDashing = true;
+            dashTrail.emitting = true;
+            yield return new WaitForSeconds(dashTime);
+            dashTrail.emitting = false;
+            isDashing = false;
+            yield return new WaitForSeconds(dashCooldown);
+            canDash = true;
         }
     }
 }

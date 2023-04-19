@@ -88,7 +88,7 @@ namespace DungeonCrawler_Chaniel
         {
             if (collision.gameObject.CompareTag("Golem"))
             {
-                if (PlayerCharacterManager.player1.GetComponent<CharacterController>().inGolem && PlayerCharacterManager.player2.GetComponent<CharacterController>().inGolem)
+                if (PlayerCharacterManager.player1.GetComponent<CharacterController>().inGolem && PlayerCharacterManager.player2.GetComponent<CharacterController>().inGolem && otherDoor != null)
                 {
                     //roomToMoveTo.SetActive(true);
                     collision.gameObject.transform.position = new Vector2(otherDoor.transform.position.x + xPlayerSpawn, otherDoor.transform.position.y + yPlayerSpawn);
