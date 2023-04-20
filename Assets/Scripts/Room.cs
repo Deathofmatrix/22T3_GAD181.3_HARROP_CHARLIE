@@ -13,11 +13,20 @@ namespace DungeonCrawler_Chaniel
         public bool isBossRoom;
         public bool isBossDead;
 
+        [SerializeField] private bool isStartRoom;
+
+        public GameObject minimapTexture;
+
         private void Start()
         {
             isBossRoom = false;
             isBossDead = false;
             FindDoorsInRoom();
+            minimapTexture = transform.Find("Minimap texture").gameObject;
+            if (!isStartRoom)
+            {
+                minimapTexture.SetActive(false);
+            }
         }
 
         private void Update()
@@ -47,6 +56,11 @@ namespace DungeonCrawler_Chaniel
                     allDoorInRoom.Add(child.gameObject);
                 }
             }
+        }
+
+        public void ActivateRoomOnMinimap()
+        {
+            minimapTexture.SetActive(true);
         }
     }
 }

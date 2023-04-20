@@ -16,6 +16,8 @@ namespace DungeonCrawler_Chaniel
         public int xPlayerSpawn;
         public int yPlayerSpawn;
 
+        public Room otherRoom;
+
         [SerializeField] private SpriteRenderer spriteRenderer;
 
         public enum DoorDirection { UNDEFINED, NORTH, SOUTH, EAST, WEST }
@@ -94,6 +96,7 @@ namespace DungeonCrawler_Chaniel
                     collision.gameObject.transform.position = new Vector2(otherDoor.transform.position.x + xPlayerSpawn, otherDoor.transform.position.y + yPlayerSpawn);
                     cameraConfiner.m_BoundingShape2D = otherCameraBounds;
                     virtualCamera.Follow = otherCameraBounds.transform.parent.transform;
+                    otherRoom.ActivateRoomOnMinimap();
                 }
             }
         }
@@ -104,6 +107,7 @@ namespace DungeonCrawler_Chaniel
                 Debug.Log("detection triggerd" + gameObject.tag + collision.gameObject.tag);
                 otherDoor = collision.gameObject.GetComponent<Collider2D>();
                 otherCameraBounds = collision.transform.parent.gameObject.GetComponentInChildren<PolygonCollider2D>();
+                otherRoom = otherDoor.transform.parent.gameObject.GetComponent<Room>();
             }
         }
     }

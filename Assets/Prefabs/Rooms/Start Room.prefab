@@ -4436,6 +4436,8 @@ MonoBehaviour:
   allDoorInRoom: []
   isBossRoom: 0
   isBossDead: 0
+  isStartRoom: 1
+  minimapTexture: {fileID: 0}
 --- !u!114 &-6572144663016559232
 MonoBehaviour:
   m_ObjectHideFlags: 0
