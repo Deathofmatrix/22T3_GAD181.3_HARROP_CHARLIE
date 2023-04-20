@@ -52,7 +52,7 @@ namespace DungeonCrawler_Chaniel
 
                     if (i > 0 && i < rooms.Count - 1)
                     {
-                        rooms[i].GetComponentInChildren<EnemySpawner>().enemiesToSpawn = Random.Range(i, i + 1);
+                        rooms[i].GetComponentInChildren<EnemySpawner>().enemiesToSpawn = Random.Range(i + 1, i + 3);
                     }
 
                 }

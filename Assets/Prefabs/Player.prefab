@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumberEnum: 0
+  spriteRenderer: {fileID: 8019892184741028021}
   player1Sprite: {fileID: 21300000, guid: c6984a1de73fcf24d81e8341a1060fff, type: 3}
   player2Sprite: {fileID: 21300000, guid: 96988885bd8eb2c47a959d265d61a805, type: 3}
   target:
@@ -110,6 +111,7 @@ MonoBehaviour:
   moveSpeed: 6
   characterRigidbody: {fileID: 8019892184741028023}
   isShooting: 0
+  invincibilityDuration: 2
 --- !u!50 &8019892184741028023
 Rigidbody2D:
   serializedVersion: 4

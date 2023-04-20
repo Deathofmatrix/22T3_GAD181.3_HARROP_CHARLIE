@@ -106,7 +106,7 @@ MonoBehaviour:
   bulletDistanceFromGolem: 0.5
   golemFuel: 100
   golemMaxFuel: 100
-  killFuelGain: 10
+  killFuelGain: 2
   golemRecharging: 0
   golemRigidbody: {fileID: 1276854188745948480}
   golemShootingDirection: {x: 0, y: 0}
@@ -116,7 +116,7 @@ MonoBehaviour:
   isDashing: 0
   dashPower: 13
   dashTime: 0.2
-  dashCooldown: 0.5
+  dashCooldown: 0.4
   entryCollider: {fileID: 1276854190159963765}
   spriteRenderer: {fileID: 1276854188745948487}
   golemActiveSprite: {fileID: 21300000, guid: cb77e3a6bf5ea844b981afdfc71da9fe, type: 3}

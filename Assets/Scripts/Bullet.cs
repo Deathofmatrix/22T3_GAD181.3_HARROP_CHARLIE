@@ -39,10 +39,6 @@ namespace DungeonCrawler_Chaniel
                     golemScript.ReduceFuel(bulletDamage);
                     Destroy(gameObject);
                 }
-                else if (collision.gameObject.CompareTag("Player"))
-                {
-                    sceneLoader.LoadThisScene("GameOver");
-                }
             }
             
             if (isPlayerBullet)

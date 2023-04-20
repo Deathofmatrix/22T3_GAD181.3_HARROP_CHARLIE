@@ -12,6 +12,9 @@ namespace DungeonCrawler_Chaniel
         public enum PlayerNumberEnum { Undeclared, Player1, Player2 };
         [SerializeField] private PlayerNumberEnum playerNumberEnum = PlayerNumberEnum.Undeclared;
 
+        private SceneLoader sceneLoader;
+
+        [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private Sprite player1Sprite;
         [SerializeField] private Sprite player2Sprite;
 
@@ -21,6 +24,9 @@ namespace DungeonCrawler_Chaniel
         public float moveSpeed = 5f;
         public Rigidbody2D characterRigidbody;
         public bool isShooting;
+
+        private bool isInvincible = false;
+        [SerializeField] private float invincibilityDuration = 1f;
         public Vector2 playerMovement { get; set; }
         public bool isInGolemTrigger { get; set; }
         public bool inGolem { get; set; }
@@ -43,6 +49,7 @@ namespace DungeonCrawler_Chaniel
 
         private void Start()
         {
+            sceneLoader = GameObject.Find("Scene Manager").GetComponent<SceneLoader>();
             playerNumberEnum = (PlayerNumberEnum)PlayerCharacterManager.totalPlayersInGame;
             this.name = this.playerNumberEnum.ToString();
 
@@ -102,15 +109,25 @@ namespace DungeonCrawler_Chaniel
             //}
         }
 
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("EnemyBullet") || collision.gameObject.CompareTag("Enemy"))
+            {
+                if (isInvincible) return;
+
+                sceneLoader.LoadThisScene("GameOver");
+            }
+        }
+
         private void Update()
         {
             switch (playerNumberEnum)
             {
                 case PlayerNumberEnum.Player1:
-                    this.GetComponent<SpriteRenderer>().sprite = player1Sprite;
+                    spriteRenderer.sprite = player1Sprite;
                     break;
                 case PlayerNumberEnum.Player2:
-                    this.GetComponent<SpriteRenderer>().sprite = player2Sprite;
+                    spriteRenderer.sprite = player2Sprite;
                     break;
                 case PlayerNumberEnum.Undeclared:
                     Debug.LogError("No player number!!!");
@@ -140,7 +157,7 @@ namespace DungeonCrawler_Chaniel
             this.transform.position = PlayerCharacterManager.golem.transform.position;
             characterRigidbody.simulated = false;
 
-            this.GetComponent<SpriteRenderer>().enabled = false;
+            spriteRenderer.enabled = false;
 
             PlayerCharacterManager.golem.GetComponent<GolemController>().golemActivated = true;
         }
@@ -153,12 +170,14 @@ namespace DungeonCrawler_Chaniel
             this.transform.SetParent(null);
             characterRigidbody.simulated = true;
 
-            this.GetComponent<SpriteRenderer>().enabled = true;
+            spriteRenderer.enabled = true;
             
             if (GolemController.charactersInGolem == 0)
             {
                 PlayerCharacterManager.golem.GetComponent<GolemController>().golemActivated = false;
             }
+
+            StartCoroutine(BecomeTemporarilyInvincible());
         }
 
         private void AddPlayerToTargetGroup()
@@ -173,6 +192,53 @@ namespace DungeonCrawler_Chaniel
                     return;
                 }
             }
+        }
+
+        private IEnumerator BecomeTemporarilyInvincible()
+        {
+            //Color tmp = spriteRenderer.color;
+            //tmp.a = 0.5f;
+            //spriteRenderer.color = tmp;
+            Debug.Log("Is Invincible");
+            isInvincible = true;
+            StartCoroutine(Blinker());
+            yield return new WaitForSeconds(invincibilityDuration);
+            //tmp.a = 1f;
+            //spriteRenderer.color = tmp;
+            isInvincible = false;
+            Debug.Log("Is not Invincible");
+        }
+        private IEnumerator Blinker()
+        {
+            Color tmp = spriteRenderer.color;
+            tmp.a = 0.5f;
+            spriteRenderer.color = tmp;
+
+            yield return new WaitForSeconds(invincibilityDuration / 5);
+
+            tmp.a = 1f;
+            spriteRenderer.color = tmp;
+
+            yield return new WaitForSeconds(invincibilityDuration / 5);
+
+            tmp.a = 0.5f;
+            spriteRenderer.color = tmp;
+
+            yield return new WaitForSeconds(invincibilityDuration / 5);
+
+            tmp.a = 1f;
+            spriteRenderer.color = tmp;
+
+            yield return new WaitForSeconds(invincibilityDuration / 5);
+
+            tmp.a = 0.5f;
+            spriteRenderer.color = tmp;
+
+            yield return new WaitForSeconds(invincibilityDuration / 5);
+
+            tmp.a = 1f;
+            spriteRenderer.color = tmp;
+
         }
     }
 }

@@ -76,10 +76,6 @@ namespace DungeonCrawler_Chaniel
                 GolemController golemScript = collision.gameObject.GetComponent<GolemController>();
                 golemScript.ReduceFuel(damage);
             }
-            if (collision.gameObject.CompareTag("Player"))
-            {
-                sceneLoader.LoadThisScene("GameOver");
-            }
         }
 
         private void OnDestroy()
