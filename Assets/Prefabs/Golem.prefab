@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28cde6e94f7b6e54d82eedfed180bd5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 6
   bulletSpeed: 8
   bulletDistanceFromGolem: 0.5
   golemFuel: 100

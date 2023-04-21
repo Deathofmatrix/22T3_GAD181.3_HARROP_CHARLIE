@@ -1,4 +1,5 @@
 using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -24,6 +25,13 @@ namespace DungeonCrawler_Chaniel
         public float moveSpeed = 5f;
         public Rigidbody2D characterRigidbody;
         public bool isShooting;
+
+        [SerializeField] private bool canDash = true;
+        [SerializeField] private bool isDashing;
+        [SerializeField] private float dashPower = 100f;
+        [SerializeField] private float dashTime = 0.2f;
+        [SerializeField] private float dashCooldown = 1f;
+        [SerializeField] private TrailRenderer dashTrail;
 
         private bool isInvincible = false;
         [SerializeField] private float invincibilityDuration = 1f;
@@ -92,7 +100,10 @@ namespace DungeonCrawler_Chaniel
         {
             if (callbackContext.started)
             {
-                //PlayerCharacterManager.golem.GetComponent<GolemController>().StartShooting();
+                if (canDash)
+                {
+                    StartCoroutine(Dash());
+                }
 
                 if (playerNumberEnum == PlayerNumberEnum.Player1)
                 PlayerCharacterManager.golem.GetComponent<GolemController>().GolemDash();
@@ -139,7 +150,14 @@ namespace DungeonCrawler_Chaniel
 
         private void FixedUpdate()
         {
-            characterRigidbody.MovePosition(characterRigidbody.position + playerMovement.normalized * moveSpeed * Time.fixedDeltaTime);
+            if (!isDashing)
+            {
+                characterRigidbody.MovePosition(characterRigidbody.position + playerMovement.normalized * moveSpeed * Time.fixedDeltaTime);
+            }
+            else if (isDashing)
+            {
+                characterRigidbody.MovePosition(characterRigidbody.position + playerMovement.normalized * dashPower * Time.fixedDeltaTime);
+            }
         }
 
 
@@ -239,6 +257,19 @@ namespace DungeonCrawler_Chaniel
             tmp.a = 1f;
             spriteRenderer.color = tmp;
 
+        }
+
+        private IEnumerator Dash()
+        {
+            Debug.Log("started corountine");
+            canDash = false;
+            isDashing = true;
+            dashTrail.emitting = true;
+            yield return new WaitForSeconds(dashTime);
+            dashTrail.emitting = false;
+            isDashing = false;
+            yield return new WaitForSeconds(dashCooldown);
+            canDash = true;
         }
     }
 }
