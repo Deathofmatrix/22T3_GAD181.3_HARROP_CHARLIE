@@ -15,6 +15,9 @@ namespace DungeonCrawler_Chaniel
         public static GameObject player1;
         public static GameObject player2;
 
+        [SerializeField] private GameObject player1JoinUI;
+        [SerializeField] private GameObject player2JoinUI;
+
         public static GameObject golem;
 
         private void Awake()
@@ -56,10 +59,12 @@ namespace DungeonCrawler_Chaniel
                 if (playerCharacterControllerScript.GetPlayerNumberEnum() == CharacterController.PlayerNumberEnum.Player1)
                 {
                     player1 = player;
+                    player1JoinUI.SetActive(false);
                 }
                 else if (playerCharacterControllerScript.GetPlayerNumberEnum() == CharacterController.PlayerNumberEnum.Player2)
                 {
                     player2 = player;
+                    player2JoinUI.SetActive(false);
                 }
             }
         }

@@ -4074,6 +4074,8 @@ MonoBehaviour:
   allDoorInRoom: []
   isBossRoom: 0
   isBossDead: 0
+  isStartRoom: 0
+  minimapTexture: {fileID: 0}
 --- !u!114 &3268556141534259632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5421,6 +5423,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6456209072154491793, guid: 40ce39399ebb93c469d9452a7d629a0e, type: 3}
+      propertyPath: minimapDoorObject
+      value: 
+      objectReference: {fileID: 5463108936329168212}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40ce39399ebb93c469d9452a7d629a0e, type: 3}
 --- !u!4 &7277642033989333415 stripped

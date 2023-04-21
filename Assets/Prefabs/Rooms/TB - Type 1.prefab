@@ -4279,6 +4279,8 @@ MonoBehaviour:
   allDoorInRoom: []
   isBossRoom: 0
   isBossDead: 0
+  isStartRoom: 0
+  minimapTexture: {fileID: 0}
 --- !u!114 &2997068946136012654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5676,6 +5678,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6697495477648614764, guid: 0f35817a0f431164e8955266f2246038, type: 3}
+      propertyPath: minimapDoorObject
+      value: 
+      objectReference: {fileID: 1233277883835257879}
     - target: {fileID: 7601804318431147519, guid: 0f35817a0f431164e8955266f2246038, type: 3}
       propertyPath: m_Name
       value: South Door
@@ -5742,6 +5748,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6456209072154491793, guid: 40ce39399ebb93c469d9452a7d629a0e, type: 3}
+      propertyPath: minimapDoorObject
+      value: 
+      objectReference: {fileID: 6114846255735342948}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40ce39399ebb93c469d9452a7d629a0e, type: 3}
 --- !u!4 &3379337072561865189 stripped

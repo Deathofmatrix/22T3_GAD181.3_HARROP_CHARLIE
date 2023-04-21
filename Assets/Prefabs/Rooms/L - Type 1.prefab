@@ -4074,6 +4074,8 @@ MonoBehaviour:
   allDoorInRoom: []
   isBossRoom: 0
   isBossDead: 0
+  isStartRoom: 0
+  minimapTexture: {fileID: 0}
 --- !u!114 &-5562021072741564581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5433,6 +5435,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: West Door
       objectReference: {fileID: 0}
+    - target: {fileID: 7532587225178820940, guid: a642c5958109d3b41b3acd9f590945a7, type: 3}
+      propertyPath: minimapDoorObject
+      value: 
+      objectReference: {fileID: 2088237739913762978}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a642c5958109d3b41b3acd9f590945a7, type: 3}
 --- !u!4 &1021892844140693805 stripped

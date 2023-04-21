@@ -19,6 +19,7 @@ namespace DungeonCrawler_Chaniel
         public Room otherRoom;
 
         [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private GameObject minimapDoorObject;
 
         public enum DoorDirection { UNDEFINED, NORTH, SOUTH, EAST, WEST }
         [SerializeField] private DoorDirection doorDirection = DoorDirection.UNDEFINED;
@@ -64,10 +65,12 @@ namespace DungeonCrawler_Chaniel
             if (otherDoor == null)
             {
                 spriteRenderer.enabled = true;
+                minimapDoorObject.SetActive(false);
             }
             else if (otherDoor)
             {
                 spriteRenderer.enabled = false;
+                minimapDoorObject.SetActive(true);
             }
         }
 

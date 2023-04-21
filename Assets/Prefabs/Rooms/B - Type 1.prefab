@@ -4172,6 +4172,7 @@ MonoBehaviour:
   allDoorInRoom: []
   isBossRoom: 0
   isBossDead: 0
+  isStartRoom: 0
   minimapTexture: {fileID: 0}
 --- !u!114 &4562870433243655159
 MonoBehaviour:
@@ -5496,6 +5497,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6697495477648614764, guid: 0f35817a0f431164e8955266f2246038, type: 3}
+      propertyPath: minimapDoorObject
+      value: 
+      objectReference: {fileID: 5112427109612256668}
     - target: {fileID: 7601804318431147519, guid: 0f35817a0f431164e8955266f2246038, type: 3}
       propertyPath: m_Name
       value: South Door

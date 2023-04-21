@@ -6141,6 +6141,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 6683725738198155523, guid: 4f946a9c4a5f5e846b8a73b76e91ca16, type: 3}
+      propertyPath: minimapDoorObject
+      value: 
+      objectReference: {fileID: 5880327138545179942}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f946a9c4a5f5e846b8a73b76e91ca16, type: 3}
 --- !u!4 &4720899399271532522 stripped
@@ -6203,6 +6207,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: West Door
       objectReference: {fileID: 0}
+    - target: {fileID: 7532587225178820940, guid: a642c5958109d3b41b3acd9f590945a7, type: 3}
+      propertyPath: minimapDoorObject
+      value: 
+      objectReference: {fileID: 4332720979995465647}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a642c5958109d3b41b3acd9f590945a7, type: 3}
 --- !u!4 &6894729596987917144 stripped
@@ -6265,6 +6273,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6456209072154491793, guid: 40ce39399ebb93c469d9452a7d629a0e, type: 3}
+      propertyPath: minimapDoorObject
+      value: 
+      objectReference: {fileID: 6329158078321660980}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40ce39399ebb93c469d9452a7d629a0e, type: 3}
 --- !u!4 &1310090525111814060 stripped
@@ -6323,6 +6335,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6697495477648614764, guid: 0f35817a0f431164e8955266f2246038, type: 3}
+      propertyPath: minimapDoorObject
+      value: 
+      objectReference: {fileID: 6671610991779659809}
     - target: {fileID: 7601804318431147519, guid: 0f35817a0f431164e8955266f2246038, type: 3}
       propertyPath: m_Name
       value: South Door
