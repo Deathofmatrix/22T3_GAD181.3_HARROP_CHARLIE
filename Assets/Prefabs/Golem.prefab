@@ -218,7 +218,7 @@ MonoBehaviour:
   bulletDistanceFromGolem: 0.5
   golemFuel: 100
   golemMaxFuel: 100
-  killFuelGain: 2
+  killFuelGain: 1
   currentRoom: {fileID: 0}
   golemRecharging: 0
   golemRigidbody: {fileID: 1276854188745948480}
