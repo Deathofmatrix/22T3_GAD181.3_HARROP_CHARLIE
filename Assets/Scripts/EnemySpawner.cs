@@ -50,6 +50,7 @@ namespace DungeonCrawler_Chaniel
         {
             if (collision.gameObject.CompareTag("Golem"))
             {
+                collision.GetComponent<GolemController>().currentRoom = transform.parent.gameObject;
                 if (transform.parent.gameObject.GetComponent<Room>().isBossRoom == false)
                 {
                     Debug.Log("Golem Entered Room");

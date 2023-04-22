@@ -17,6 +17,8 @@ namespace DungeonCrawler_Chaniel
         public int golemMaxFuel = 100;
         public int killFuelGain = 10;
 
+        public GameObject currentRoom;
+
         [SerializeField] private bool golemRecharging = false;
 
         public Rigidbody2D golemRigidbody;
@@ -41,7 +43,7 @@ namespace DungeonCrawler_Chaniel
         [SerializeField] private GameObject bullet;
         [SerializeField] private Slider fuelBar;
 
-        [SerializeField] private GameObject light;
+        [SerializeField] private GameObject golemLight;
 
         private float nextFuelReduction;
         [SerializeField] private float timeBetweenFuelReduction;
@@ -59,6 +61,10 @@ namespace DungeonCrawler_Chaniel
 
         private void Update()
         {
+            if (currentRoom.GetComponent<Room>().enemiesInRoom == 0)
+            {
+                golemRecharging = true;
+            }
 
             RechargeGolem();
 
@@ -75,7 +81,11 @@ namespace DungeonCrawler_Chaniel
             if (Time.time > nextFuelReduction)
             {
                 nextFuelReduction = Time.time + timeBetweenFuelReduction;
-                ReduceFuel(1);
+                if (currentRoom.GetComponent<Room>().enemiesInRoom > 0)
+                {
+                    Debug.LogWarning("fuel reduction");
+                    ReduceFuel(1);
+                }
             }
 
             ChangeFuelLevelSlider();
@@ -223,7 +233,7 @@ namespace DungeonCrawler_Chaniel
             golemActivated = false;
             spriteRenderer.sprite = golemInactiveSprite;
             golemRecharging = true;
-            light.SetActive(false);
+            golemLight.SetActive(false);
         }
 
         private void ActivateGolem()
@@ -231,7 +241,7 @@ namespace DungeonCrawler_Chaniel
             entryCollider.enabled = true;
             spriteRenderer.sprite = golemActiveSprite;
             golemRecharging = false;
-            light.SetActive(true);
+            golemLight.SetActive(true);
         }
 
         private void RechargeGolem()
@@ -256,6 +266,14 @@ namespace DungeonCrawler_Chaniel
             yield return new WaitForSeconds(dashCooldown);
             canDash = true;
         }
+
+        //private void OnTriggerEnter2D(Collider2D collision)
+        //{
+        //    if (collision.gameObject.CompareTag("Room"))
+        //    {
+        //        currentRoom = collision.transform.parent.gameObject;
+        //    }
+        //}
     }
 }
 

@@ -171,6 +171,8 @@ namespace DungeonCrawler_Chaniel
             GolemController.charactersInGolem++;
             inGolem = true;
 
+            dashTrail.enabled = false;
+
             this.transform.parent = PlayerCharacterManager.golem.transform;
             this.transform.position = PlayerCharacterManager.golem.transform.position;
             characterRigidbody.simulated = false;
@@ -184,6 +186,8 @@ namespace DungeonCrawler_Chaniel
         {
             GolemController.charactersInGolem--;
             inGolem = false;
+
+            dashTrail.enabled = true;
 
             this.transform.SetParent(null);
             characterRigidbody.simulated = true;
@@ -214,15 +218,10 @@ namespace DungeonCrawler_Chaniel
 
         private IEnumerator BecomeTemporarilyInvincible()
         {
-            //Color tmp = spriteRenderer.color;
-            //tmp.a = 0.5f;
-            //spriteRenderer.color = tmp;
             Debug.Log("Is Invincible");
             isInvincible = true;
             StartCoroutine(Blinker());
             yield return new WaitForSeconds(invincibilityDuration);
-            //tmp.a = 1f;
-            //spriteRenderer.color = tmp;
             isInvincible = false;
             Debug.Log("Is not Invincible");
         }

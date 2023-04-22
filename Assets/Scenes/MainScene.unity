@@ -12185,6 +12185,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1410893470 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6265225419825668842, guid: 592063689d7937e4096c3b31d744b894, type: 3}
+  m_PrefabInstance: {fileID: 4205061441755471204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1424561454
 GameObject:
   m_ObjectHideFlags: 0
@@ -15067,28 +15072,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 301892885, guid: 999c6b23cb6e5334a98e3c508c967cb2, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 301892885, guid: 999c6b23cb6e5334a98e3c508c967cb2, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 301892885, guid: 999c6b23cb6e5334a98e3c508c967cb2, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 301892885, guid: 999c6b23cb6e5334a98e3c508c967cb2, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 301892885, guid: 999c6b23cb6e5334a98e3c508c967cb2, type: 3}
-      propertyPath: m_PointLightInnerRadius
-      value: 0.79
-      objectReference: {fileID: 0}
-    - target: {fileID: 301892885, guid: 999c6b23cb6e5334a98e3c508c967cb2, type: 3}
       propertyPath: m_PointLightOuterRadius
-      value: 21.63
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1276854188745948482, guid: 999c6b23cb6e5334a98e3c508c967cb2, type: 3}
       propertyPath: m_Name
@@ -15098,6 +15083,10 @@ PrefabInstance:
       propertyPath: fuelBar
       value: 
       objectReference: {fileID: 1433425391}
+    - target: {fileID: 1276854188745948484, guid: 999c6b23cb6e5334a98e3c508c967cb2, type: 3}
+      propertyPath: currentRoom
+      value: 
+      objectReference: {fileID: 1410893470}
     - target: {fileID: 1276854188745948486, guid: 999c6b23cb6e5334a98e3c508c967cb2, type: 3}
       propertyPath: m_RootOrder
       value: 10
