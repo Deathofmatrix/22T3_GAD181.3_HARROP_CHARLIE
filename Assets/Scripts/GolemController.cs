@@ -41,6 +41,8 @@ namespace DungeonCrawler_Chaniel
         [SerializeField] private GameObject bullet;
         [SerializeField] private Slider fuelBar;
 
+        [SerializeField] private GameObject light;
+
         private float nextFuelReduction;
         [SerializeField] private float timeBetweenFuelReduction;
         
@@ -221,6 +223,7 @@ namespace DungeonCrawler_Chaniel
             golemActivated = false;
             spriteRenderer.sprite = golemInactiveSprite;
             golemRecharging = true;
+            light.SetActive(false);
         }
 
         private void ActivateGolem()
@@ -228,6 +231,7 @@ namespace DungeonCrawler_Chaniel
             entryCollider.enabled = true;
             spriteRenderer.sprite = golemActiveSprite;
             golemRecharging = false;
+            light.SetActive(true);
         }
 
         private void RechargeGolem()

@@ -29,7 +29,7 @@ TagManager:
   - Enemy
   - Boss
   - ' Minimap'
-  - 
+  - PostProcessing
   - 
   - 
   - 
@@ -51,4 +51,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Minimap
+    uniqueID: 674825131
     locked: 0

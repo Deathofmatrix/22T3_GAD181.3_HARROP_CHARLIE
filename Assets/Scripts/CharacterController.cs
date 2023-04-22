@@ -229,7 +229,7 @@ namespace DungeonCrawler_Chaniel
         private IEnumerator Blinker()
         {
             Color tmp = spriteRenderer.color;
-            tmp.a = 0.5f;
+            tmp.a = 0.2f;
             spriteRenderer.color = tmp;
 
             yield return new WaitForSeconds(invincibilityDuration / 5);
@@ -239,7 +239,7 @@ namespace DungeonCrawler_Chaniel
 
             yield return new WaitForSeconds(invincibilityDuration / 5);
 
-            tmp.a = 0.5f;
+            tmp.a = 0.2f;
             spriteRenderer.color = tmp;
 
             yield return new WaitForSeconds(invincibilityDuration / 5);
@@ -249,7 +249,7 @@ namespace DungeonCrawler_Chaniel
 
             yield return new WaitForSeconds(invincibilityDuration / 5);
 
-            tmp.a = 0.5f;
+            tmp.a = 0.2f;
             spriteRenderer.color = tmp;
 
             yield return new WaitForSeconds(invincibilityDuration / 5);
