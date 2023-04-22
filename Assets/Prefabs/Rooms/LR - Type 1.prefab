@@ -4479,7 +4479,7 @@ GameObject:
   - component: {fileID: 1565110553123181486}
   - component: {fileID: 6324885447331023062}
   - component: {fileID: 7765563492996050479}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Walls
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -5580,6 +5580,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: East Door
       objectReference: {fileID: 0}
+    - target: {fileID: 3956690309734801809, guid: 4f946a9c4a5f5e846b8a73b76e91ca16, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5037241708020881701, guid: 4f946a9c4a5f5e846b8a73b76e91ca16, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -5628,6 +5632,10 @@ PrefabInstance:
       propertyPath: minimapDoorObject
       value: 
       objectReference: {fileID: 1420749900040173224}
+    - target: {fileID: 7858122347324404019, guid: 4f946a9c4a5f5e846b8a73b76e91ca16, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f946a9c4a5f5e846b8a73b76e91ca16, type: 3}
 --- !u!4 &6433636149396632106 stripped
@@ -5704,6 +5712,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2401125609089351408}
     m_Modifications:
+    - target: {fileID: 531004915174504672, guid: a642c5958109d3b41b3acd9f590945a7, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5403270094683972259, guid: a642c5958109d3b41b3acd9f590945a7, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -5751,6 +5763,10 @@ PrefabInstance:
     - target: {fileID: 6208208202099436508, guid: a642c5958109d3b41b3acd9f590945a7, type: 3}
       propertyPath: m_Name
       value: West Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208208202099436508, guid: a642c5958109d3b41b3acd9f590945a7, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7532587225178820940, guid: a642c5958109d3b41b3acd9f590945a7, type: 3}
       propertyPath: minimapDoorObject

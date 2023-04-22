@@ -4274,7 +4274,7 @@ GameObject:
   - component: {fileID: 1565110553123181486}
   - component: {fileID: 6324885447331023062}
   - component: {fileID: 7765563492996050479}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Walls
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -5453,6 +5453,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2401125609089351408}
     m_Modifications:
+    - target: {fileID: 1824068181889678723, guid: 0f35817a0f431164e8955266f2246038, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6590052807808839216, guid: 0f35817a0f431164e8955266f2246038, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -5504,6 +5508,10 @@ PrefabInstance:
     - target: {fileID: 7601804318431147519, guid: 0f35817a0f431164e8955266f2246038, type: 3}
       propertyPath: m_Name
       value: South Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 7601804318431147519, guid: 0f35817a0f431164e8955266f2246038, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f35817a0f431164e8955266f2246038, type: 3}

@@ -24,15 +24,15 @@ TagManager:
   - Water
   - UI
   - Player
-  - ' Player Bullet'
+  - Player Bullet
   - Golem
   - EnemyBullet
   - Enemy
   - Boss
   - ' Minimap'
   - PostProcessing
-  - 
-  - 
+  - IgnoreCollision
+  - Wall
   - 
   - 
   - 

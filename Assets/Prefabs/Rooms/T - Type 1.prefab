@@ -4274,7 +4274,7 @@ GameObject:
   - component: {fileID: 1565110553123181486}
   - component: {fileID: 6324885447331023062}
   - component: {fileID: 7765563492996050479}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Walls
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -5375,9 +5375,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2401125609089351408}
     m_Modifications:
+    - target: {fileID: 110414759668319152, guid: 40ce39399ebb93c469d9452a7d629a0e, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 333555152178113085, guid: 40ce39399ebb93c469d9452a7d629a0e, type: 3}
       propertyPath: m_Name
       value: North Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 333555152178113085, guid: 40ce39399ebb93c469d9452a7d629a0e, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6075813016211489135, guid: 40ce39399ebb93c469d9452a7d629a0e, type: 3}
       propertyPath: m_RootOrder

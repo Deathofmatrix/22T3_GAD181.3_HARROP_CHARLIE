@@ -63,7 +63,7 @@ namespace DungeonCrawler_Chaniel
         {
             if (currentRoom.GetComponent<Room>().enemiesInRoom == 0)
             {
-                golemRecharging = true;
+                golemFuel = golemMaxFuel;
             }
 
             RechargeGolem();
@@ -104,10 +104,6 @@ namespace DungeonCrawler_Chaniel
             {
                 GolemMove();
             }
-            //else if (PlayerCharacterManager.player2 != null && PlayerCharacterManager.player2.GetComponent<CharacterController>().inGolem)
-            //{
-            //    //GolemShoot();
-            //}
         }
 
         private void FixedUpdate()
@@ -249,7 +245,7 @@ namespace DungeonCrawler_Chaniel
             if (Time.time > nextFuelRecharge && golemRecharging)
             {
                 nextFuelRecharge = Time.time + timeBetweenFuelRecharges;
-                IncreaseFuel(1);
+                IncreaseFuel(2);
                 Debug.Log("recharging");
             }
         }
