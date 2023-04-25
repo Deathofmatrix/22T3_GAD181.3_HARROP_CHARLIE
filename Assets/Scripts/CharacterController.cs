@@ -222,7 +222,7 @@ namespace DungeonCrawler_Chaniel
             isInvincible = true;
             for (int i = 0; i < 32; i++)
             {
-                if (i != LayerMask.NameToLayer("Wall") || i != LayerMask.NameToLayer("Player Bullet"))
+                if (i != LayerMask.NameToLayer("Wall") && i != LayerMask.NameToLayer("Player Bullet"))
                 {
                     Debug.LogWarning("wall layer");
                     Physics2D.IgnoreLayerCollision(gameObject.layer, i, true);
@@ -232,7 +232,7 @@ namespace DungeonCrawler_Chaniel
             yield return new WaitForSeconds(invincibilityDuration);
             for (int i = 0; i < 32; i++)
             {
-                if (i != LayerMask.NameToLayer("Wall") || i != LayerMask.NameToLayer("Player Bullet"))
+                if (i != LayerMask.NameToLayer("Wall") && i != LayerMask.NameToLayer("Player Bullet"))
                 {
                     Physics2D.IgnoreLayerCollision(gameObject.layer, i, false);
                 }

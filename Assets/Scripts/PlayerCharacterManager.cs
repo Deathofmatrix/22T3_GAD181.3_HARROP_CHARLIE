@@ -20,12 +20,15 @@ namespace DungeonCrawler_Chaniel
 
         public static GameObject golem;
 
+        [SerializeField] private GameObject upgradePanel;
+
         private void Awake()
         {
             allPlayers.Clear();
             totalPlayersInGame = 0;
             golem = GameObject.FindGameObjectWithTag("Golem");
         }
+
         private void Update()
         {
             publicTotalPlayersInGame = totalPlayersInGame;
@@ -69,7 +72,23 @@ namespace DungeonCrawler_Chaniel
             }
         }
 
-        
+        public void MoveSpeedUpgrade()
+        {
+            FindObjectOfType<SoundManager>().Play("Upgrade");
+            golem.GetComponent<GolemController>().moveSpeed += 1;
+            golem.GetComponent<GolemController>().currentRoom.GetComponent<Room>().upgradeGiven = true;
+            upgradePanel.SetActive(false);
+            Time.timeScale = 1;
+        }
+
+        public void FireRateUpgrade()
+        {
+            FindObjectOfType<SoundManager>().Play("Upgrade");
+            golem.GetComponent<GolemController>().timeBetweenShots -= 0.05f;
+            golem.GetComponent<GolemController>().currentRoom.GetComponent<Room>().upgradeGiven = true;
+            upgradePanel.SetActive(false);
+            Time.timeScale = 1;
+        }
     }
 }
 

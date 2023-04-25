@@ -4097,7 +4097,12 @@ MonoBehaviour:
   allDoorInRoom: []
   isBossRoom: 0
   isBossDead: 0
+  roomComplete: 0
+  upgradeGiven: 0
   isStartRoom: 0
+  roomTemplates: {fileID: 0}
+  mainCanvas: {fileID: 0}
+  upgradePanel: {fileID: 0}
   minimapTexture: {fileID: 0}
 --- !u!114 &4586699991031519531
 MonoBehaviour:

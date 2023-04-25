@@ -17,6 +17,8 @@ namespace DungeonCrawler_Chaniel
         public float minimumDistance;
         [SerializeField] private Rigidbody2D rigidBody2D;
         [SerializeField] Vector3 direction;
+        //[SerializeField] bool inWall = false;
+        //[SerializeField] bool moved = false;
 
         private void Start()
         {
@@ -24,6 +26,7 @@ namespace DungeonCrawler_Chaniel
             //room.enemiesSpawned++;
             sceneLoader = GameObject.Find("Scene Manager").GetComponent<SceneLoader>();
             transform.parent.parent.gameObject.GetComponent<Room>().enemiesInRoom++;
+            //StartCoroutine(MoveOutOfWall());
         }
         private void FindTarget()
         {
@@ -69,12 +72,18 @@ namespace DungeonCrawler_Chaniel
             //    Destroy(collision.gameObject);
             //    Destroy(gameObject);
             //}
+            //if (collision.gameObject.CompareTag("Wall"))
+            //{
+            //    //inWall = true;
+            //}
+
             if (collision.gameObject.CompareTag("Golem"))
             {
                 //ScoreManager.finalScore = ScoreManager.score;
                 //sceneLoader.LoadThisScene("GameOver");
                 GolemController golemScript = collision.gameObject.GetComponent<GolemController>();
                 golemScript.ReduceFuel(damage);
+                FindObjectOfType<SoundManager>().Play("Hurt");
             }
         }
 
@@ -88,6 +97,18 @@ namespace DungeonCrawler_Chaniel
                 golemScript.OnEnemyKill();
             }  
         }
+        
+        //public IEnumerator MoveOutOfWall()
+        //{
+        //    if (inWall && moved == false)
+        //    {
+        //        Vector2.MoveTowards(transform.position, PlayerCharacterManager.golem.transform.position, 5f);
+        //    }
+        //    yield return new WaitForSeconds(1f);
+
+        //    inWall = false;
+        //    moved = true;
+        //}
     }
 }
 

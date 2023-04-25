@@ -37,6 +37,7 @@ namespace DungeonCrawler_Chaniel
                 {
                     GolemController golemScript = collision.gameObject.GetComponent<GolemController>();
                     golemScript.ReduceFuel(bulletDamage);
+                    FindObjectOfType<SoundManager>().Play("Hurt");
                     Destroy(gameObject);
                 }
             }

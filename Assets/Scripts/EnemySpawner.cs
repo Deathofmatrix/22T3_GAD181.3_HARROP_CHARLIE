@@ -106,14 +106,65 @@ namespace DungeonCrawler_Chaniel
             Vector2 size = spawnArea.bounds.size;
             Vector2 spawnPosition;
 
+            float boxSize = 5f;
+
             do
             {
                 float x = Random.Range(center.x - size.x / 2f, center.x + size.x / 2f);
                 float y = Random.Range(center.y - size.y / 2f, center.y + size.y / 2f);
                 spawnPosition = new Vector2(x, y);
+
+                Collider2D[] colliders = Physics2D.OverlapBoxAll(spawnPosition, new Vector2(boxSize, boxSize), 0f);
+                Debug.Log(colliders.Length);
+                if (colliders.Length == 0)
+                {
+                    continue;
+                }
+
             } while (Vector2.Distance(spawnPosition, PlayerCharacterManager.golem.transform.position) < minDistanceFromPlayer);
+
             return spawnPosition;
         }
+
+        //private Vector3 GetRandomSpawnPosition()
+        //{
+        //    Vector2 center = spawnArea.bounds.center;
+        //    Vector2 size = spawnArea.bounds.size;
+        //    Vector2 spawnPosition;
+
+        //    float boxSize = 10f;
+
+        //    do
+        //    {
+        //        float x = Random.Range(center.x - size.x / 2f, center.x + size.x / 2f);
+        //        float y = Random.Range(center.y - size.y / 2f, center.y + size.y / 2f);
+        //        spawnPosition = new Vector2(x, y);
+
+        //        Collider2D[] colliders = Physics2D.OverlapBoxAll(spawnPosition, new Vector2(boxSize, boxSize), 0f);
+        //        if (colliders.Length == 0)
+        //        {
+        //            continue;
+        //        }
+
+        //        bool foundWall = false;
+        //        foreach (Collider2D collider in colliders)
+        //        {
+        //            if (collider.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        //            {
+        //                foundWall = true;
+        //                break;
+        //            }
+        //        }
+
+        //        if (foundWall)
+        //        {
+        //            continue;
+        //        }
+
+        //    } while (Vector2.Distance(spawnPosition, PlayerCharacterManager.golem.transform.position) < minDistanceFromPlayer);
+        //    return spawnPosition;
+        //}
+
 
         private GameObject RandomiseEnemy()
         {

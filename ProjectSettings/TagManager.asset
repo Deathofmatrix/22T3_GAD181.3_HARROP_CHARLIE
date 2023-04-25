@@ -16,6 +16,7 @@ TagManager:
   - EnemySpawner
   - Boss
   - Room
+  - UpgradePanel
   layers:
   - Default
   - TransparentFX

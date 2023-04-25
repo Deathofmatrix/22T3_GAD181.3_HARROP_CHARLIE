@@ -64,6 +64,7 @@ namespace DungeonCrawler_Chaniel
             if (currentRoom.GetComponent<Room>().enemiesInRoom == 0)
             {
                 golemFuel = golemMaxFuel;
+                currentRoom.GetComponent<Room>().roomComplete = true;
             }
 
             RechargeGolem();
@@ -148,6 +149,8 @@ namespace DungeonCrawler_Chaniel
                 {
                     GameObject newbullet = Instantiate(bullet, golemRigidbody.position + golemShootingDirection * bulletDistanceFromGolem, transform.rotation);
                     newbullet.GetComponent<Rigidbody2D>().velocity = golemShootingDirection.normalized * bulletSpeed;
+
+                    FindObjectOfType<SoundManager>().Play("Shoot");
 
                     canShoot = false;
                     timeSinceLastShot = 0f;
@@ -270,6 +273,8 @@ namespace DungeonCrawler_Chaniel
         //        currentRoom = collision.transform.parent.gameObject;
         //    }
         //}
+
+
     }
 }
 
