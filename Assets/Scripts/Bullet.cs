@@ -30,6 +30,10 @@ namespace DungeonCrawler_Chaniel
             {
                 Destroy(gameObject);
             }
+            if (collision.gameObject.CompareTag("PlayerBullet") || collision.gameObject.CompareTag("EnemyBullet"))
+            {
+                Destroy(gameObject);
+            }
 
             if (!isPlayerBullet)
             {

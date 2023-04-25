@@ -22,6 +22,7 @@ namespace DungeonCrawler_Chaniel
 
         private void Start()
         {
+            Debug.Log(name + transform.localPosition);
             //room = GameObject.Find("Room1").GetComponent<Room>();
             //room.enemiesSpawned++;
             sceneLoader = GameObject.Find("Scene Manager").GetComponent<SceneLoader>();

@@ -23,6 +23,7 @@ namespace DungeonCrawler_Chaniel
 
         private void Start()
         {
+            Debug.Log(name + transform.localPosition);
             transform.parent.parent.gameObject.GetComponent<Room>().enemiesInRoom++;
         }
 

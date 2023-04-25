@@ -168,38 +168,44 @@ namespace DungeonCrawler_Chaniel
 
         public void GetInGolem()
         {
-            GolemController.charactersInGolem++;
-            inGolem = true;
+            if (Time.timeScale == 1)
+            {
+                GolemController.charactersInGolem++;
+                inGolem = true;
 
-            dashTrail.enabled = false;
+                dashTrail.enabled = false;
 
-            this.transform.parent = PlayerCharacterManager.golem.transform;
-            this.transform.position = PlayerCharacterManager.golem.transform.position;
-            characterRigidbody.simulated = false;
+                this.transform.parent = PlayerCharacterManager.golem.transform;
+                this.transform.position = PlayerCharacterManager.golem.transform.position;
+                characterRigidbody.simulated = false;
 
-            spriteRenderer.enabled = false;
+                spriteRenderer.enabled = false;
 
-            PlayerCharacterManager.golem.GetComponent<GolemController>().golemActivated = true;
+                PlayerCharacterManager.golem.GetComponent<GolemController>().golemActivated = true;
+            }
         }
 
         public void GetOutOfGolem()
         {
-            GolemController.charactersInGolem--;
-            inGolem = false;
-
-            dashTrail.enabled = true;
-
-            this.transform.SetParent(null);
-            characterRigidbody.simulated = true;
-
-            spriteRenderer.enabled = true;
-            
-            if (GolemController.charactersInGolem == 0)
+            if (Time.timeScale == 1)
             {
-                PlayerCharacterManager.golem.GetComponent<GolemController>().golemActivated = false;
-            }
+                GolemController.charactersInGolem--;
+                inGolem = false;
 
-            StartCoroutine(BecomeTemporarilyInvincible());
+                dashTrail.enabled = true;
+
+                this.transform.SetParent(null);
+                characterRigidbody.simulated = true;
+
+                spriteRenderer.enabled = true;
+
+                if (GolemController.charactersInGolem == 0)
+                {
+                    PlayerCharacterManager.golem.GetComponent<GolemController>().golemActivated = false;
+                }
+
+                StartCoroutine(BecomeTemporarilyInvincible());
+            }
         }
 
         private void AddPlayerToTargetGroup()
@@ -276,6 +282,7 @@ namespace DungeonCrawler_Chaniel
         private IEnumerator Dash()
         {
             Debug.Log("started corountine");
+            FindObjectOfType<SoundManager>().Play("Dash2");
             canDash = false;
             isDashing = true;
             dashTrail.emitting = true;

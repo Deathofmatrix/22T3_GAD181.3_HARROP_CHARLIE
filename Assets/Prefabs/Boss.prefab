@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -6
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 655ed6a374445194598ade6a249522c5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -195,6 +195,7 @@ MonoBehaviour:
   maxHealth: 300
   canvas: {fileID: 0}
   bossHealthSlider: {fileID: 0}
+  soundManager: {fileID: 0}
 --- !u!50 &2230536059042550630
 Rigidbody2D:
   serializedVersion: 4

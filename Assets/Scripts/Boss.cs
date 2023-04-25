@@ -22,9 +22,11 @@ namespace DungeonCrawler_Chaniel
 
         [SerializeField] private Canvas canvas;
         [SerializeField] private Slider bossHealthSlider;
+        [SerializeField] private SoundManager soundManager;
 
         private void Start()
         {
+            soundManager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
             canvas = GameObject.Find("Canvas - Overlay").GetComponent<Canvas>();
             bossHealthSlider = canvas.gameObject.transform.Find("Boss Health").GetComponent<Slider>();
             bossHealthSlider.gameObject.SetActive(false);
@@ -55,6 +57,21 @@ namespace DungeonCrawler_Chaniel
                 if (currentHealth == 0)
                 {
                     GameObject.Find("Scene Manager").GetComponent<SceneLoader>().LoadThisScene("VictoryScene");
+                }
+
+                if (numberOfDirections == 1)
+                {
+                    soundManager.mainMusic.pitch = 1.1f;
+                }
+
+                if (numberOfDirections == 2)
+                {
+                    soundManager.mainMusic.pitch = 1.2f;
+                }
+
+                if (numberOfDirections == 4)
+                {
+                    soundManager.mainMusic.pitch = 1.3f;
                 }
             }
         }

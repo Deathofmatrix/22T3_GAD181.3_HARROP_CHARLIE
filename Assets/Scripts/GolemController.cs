@@ -76,6 +76,10 @@ namespace DungeonCrawler_Chaniel
 
             if (golemFuel == golemMaxFuel)
             {
+                if (golemRecharging == true)
+                {
+                    FindObjectOfType<SoundManager>().Play("GolemRecharge");
+                }
                 ActivateGolem();
             }
 
@@ -233,6 +237,7 @@ namespace DungeonCrawler_Chaniel
             spriteRenderer.sprite = golemInactiveSprite;
             golemRecharging = true;
             golemLight.SetActive(false);
+            FindObjectOfType<SoundManager>().Play("GolemDead");
         }
 
         private void ActivateGolem()
@@ -256,6 +261,7 @@ namespace DungeonCrawler_Chaniel
         private IEnumerator Dash()
         {
             Debug.Log("started corountine");
+            FindObjectOfType<SoundManager>().Play("Dash");
             canDash = false;
             isDashing = true;
             dashTrail.emitting = true;

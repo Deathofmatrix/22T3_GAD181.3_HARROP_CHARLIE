@@ -7,32 +7,6 @@ namespace DungeonCrawler_Chaniel
 {
     public class EnemySpawner : MonoBehaviour
     {
-        //private float currentTime = 0;
-        //[SerializeField] private float timeToSpawnEnemy;
-
-        //[SerializeField] private GameObject enemyPrefab;
-
-        //public bool stopSpawning { get; set; }
-
-        //// Update is called once per frame
-        //void Update()
-        //{
-        //    if (!stopSpawning)
-        //    {
-        //        SpawnEnemyOnTimer();
-        //    }
-        //}
-
-        //public void SpawnEnemyOnTimer()
-        //{
-        //    currentTime += Time.deltaTime;
-
-        //    if (currentTime > timeToSpawnEnemy)
-        //    {
-        //        Instantiate(enemyPrefab, transform.position, Quaternion.identity);
-        //        currentTime = 0;
-        //    }
-        //}
 
         public GameObject[] enemyPrefabs;
         public BoxCollider2D spawnArea;
@@ -46,6 +20,7 @@ namespace DungeonCrawler_Chaniel
         {
             timeBetweenWaves = 3;
         }
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.CompareTag("Golem"))
@@ -86,19 +61,6 @@ namespace DungeonCrawler_Chaniel
                 newEnemy.transform.parent = this.transform;
             }
         }
-        //public void OnTriggerEnter(Collider other)
-        //{
-        //    if (other.CompareTag("Golem"))
-        //    {
-        //        Debug.Log("Golem Entered Room");
-        //        for (int i = 0; i < enemiesToSpawn; i++)
-        //        {
-        //            Vector3 spawnPosition = GetRandomSpawnPosition();
-        //            Instantiate(RandomiseEnemy(), spawnPosition, Quaternion.identity);
-        //        }
-        //        enemiesToSpawn = 0;
-        //    }
-        //}
 
         private Vector3 GetRandomSpawnPosition()
         {
@@ -106,22 +68,26 @@ namespace DungeonCrawler_Chaniel
             Vector2 size = spawnArea.bounds.size;
             Vector2 spawnPosition;
 
-            float boxSize = 5f;
-
+            float boxSize = 2f;
+            bool canSpawn = false;
             do
             {
                 float x = Random.Range(center.x - size.x / 2f, center.x + size.x / 2f);
                 float y = Random.Range(center.y - size.y / 2f, center.y + size.y / 2f);
                 spawnPosition = new Vector2(x, y);
 
-                Collider2D[] colliders = Physics2D.OverlapBoxAll(spawnPosition, new Vector2(boxSize, boxSize), 0f);
+                if (!spawnArea.bounds.Contains(spawnPosition)) continue;
+
+                canSpawn = true;
+
+                Collider2D[] colliders = Physics2D.OverlapBoxAll(spawnPosition, new Vector2(boxSize, boxSize), 0f, LayerMask.GetMask("Wall"));
                 Debug.Log(colliders.Length);
-                if (colliders.Length == 0)
+                if (colliders.Length > 0)
                 {
-                    continue;
+                    canSpawn = false;
                 }
 
-            } while (Vector2.Distance(spawnPosition, PlayerCharacterManager.golem.transform.position) < minDistanceFromPlayer);
+            } while (Vector2.Distance(spawnPosition, PlayerCharacterManager.golem.transform.position) < minDistanceFromPlayer || !canSpawn);
 
             return spawnPosition;
         }

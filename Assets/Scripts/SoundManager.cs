@@ -8,6 +8,8 @@ namespace DungeonCrawler_Chaniel
 {
     public class SoundManager : MonoBehaviour
     {
+        public AudioSource mainMusic;
+
         public Sound[] sounds;
 
         private void Awake()

@@ -89,6 +89,16 @@ namespace DungeonCrawler_Chaniel
             upgradePanel.SetActive(false);
             Time.timeScale = 1;
         }
+
+        public void DevMode()
+        {
+            Debug.Log("Destroy all");
+            Transform spawnerTransform = golem.GetComponent<GolemController>().currentRoom.transform.Find("EnemySpawner");
+            foreach (Transform child in spawnerTransform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
     }
 }
 
