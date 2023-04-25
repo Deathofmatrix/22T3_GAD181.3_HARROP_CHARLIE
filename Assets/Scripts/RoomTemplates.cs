@@ -18,6 +18,8 @@ namespace DungeonCrawler_Chaniel
 
         public List<GameObject>  rooms;
 
+        public GameObject[] obstacleLayouts;
+
         public float waitTime;
         [SerializeField] private bool spawnedBoss;
         public GameObject boss;
