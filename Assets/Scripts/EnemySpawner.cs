@@ -16,6 +16,8 @@ namespace DungeonCrawler_Chaniel
         public float timeBetweenWaves;
         private float nextBossRoomWave;
 
+        private List<Vector2> listOfTemporarySpawnPositions = new List<Vector2>();
+
         private void Start()
         {
             timeBetweenWaves = 3;
@@ -85,7 +87,15 @@ namespace DungeonCrawler_Chaniel
                 if (colliders.Length > 0)
                 {
                     canSpawn = false;
+                    print("Tried to find a suitable spawn position, but we hit a collider. Also, \"canSpawn\" has been set to false.");
                 }
+
+                if(Vector2.Distance(spawnPosition, PlayerCharacterManager.golem.transform.position) < minDistanceFromPlayer)
+                {
+                    print("Tried to find a suitable spawn position, but we are too close to the golem's position.");
+                }
+
+                listOfTemporarySpawnPositions.Add(spawnPosition);
 
             } while (Vector2.Distance(spawnPosition, PlayerCharacterManager.golem.transform.position) < minDistanceFromPlayer || !canSpawn);
 
@@ -137,6 +147,17 @@ namespace DungeonCrawler_Chaniel
             int randomIndex = Random.Range(0, enemyPrefabs.Length);
             GameObject enemyToSpawn = enemyPrefabs[randomIndex];
             return enemyToSpawn;
+        }
+
+        private void OnDrawGizmos()
+        {
+            if (listOfTemporarySpawnPositions.Count == 0) return;
+
+            foreach (Vector2 spawnPosition in listOfTemporarySpawnPositions)
+            {
+                Gizmos.color = new Color(Random.Range(0.6f, 1f), Random.Range(0.6f, 1f), Random.Range(0.6f, 1f));
+                Gizmos.DrawWireCube(spawnPosition, Vector3.one * 2f);
+            }
         }
     }
 }
