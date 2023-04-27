@@ -132,6 +132,8 @@ namespace DungeonCrawler_Chaniel
 
         private void Update()
         {
+            dashPower = moveSpeed * 2;
+
             switch (playerNumberEnum)
             {
                 case PlayerNumberEnum.Player1:
@@ -204,7 +206,7 @@ namespace DungeonCrawler_Chaniel
                     PlayerCharacterManager.golem.GetComponent<GolemController>().golemActivated = false;
                 }
 
-                StartCoroutine(BecomeTemporarilyInvincible());
+                StartCoroutine(BecomeTemporarilyInvincible(invincibilityDuration));
             }
         }
 
@@ -222,7 +224,7 @@ namespace DungeonCrawler_Chaniel
             }
         }
 
-        private IEnumerator BecomeTemporarilyInvincible()
+        private IEnumerator BecomeTemporarilyInvincible(float invincibiltyTime)
         {
             Debug.Log("Is Invincible");
             isInvincible = true;
@@ -235,7 +237,7 @@ namespace DungeonCrawler_Chaniel
                 }
             }
             StartCoroutine(Blinker());
-            yield return new WaitForSeconds(invincibilityDuration);
+            yield return new WaitForSeconds(invincibiltyTime);
             for (int i = 0; i < 32; i++)
             {
                 if (i != LayerMask.NameToLayer("Wall") && i != LayerMask.NameToLayer("Player Bullet"))
@@ -282,11 +284,30 @@ namespace DungeonCrawler_Chaniel
         private IEnumerator Dash()
         {
             Debug.Log("started corountine");
+            Debug.Log("Is Invincible");
+            isInvincible = true;
+            for (int i = 0; i < 32; i++)
+            {
+                if (i != LayerMask.NameToLayer("Wall") && i != LayerMask.NameToLayer("Player Bullet"))
+                {
+                    Debug.LogWarning("wall layer");
+                    Physics2D.IgnoreLayerCollision(gameObject.layer, i, true);
+                }
+            }
             FindObjectOfType<SoundManager>().Play("Dash2");
             canDash = false;
             isDashing = true;
             dashTrail.emitting = true;
             yield return new WaitForSeconds(dashTime);
+            for (int i = 0; i < 32; i++)
+            {
+                if (i != LayerMask.NameToLayer("Wall") && i != LayerMask.NameToLayer("Player Bullet"))
+                {
+                    Physics2D.IgnoreLayerCollision(gameObject.layer, i, false);
+                }
+            }
+            isInvincible = false;
+            Debug.Log("Is not Invincible");
             dashTrail.emitting = false;
             isDashing = false;
             yield return new WaitForSeconds(dashCooldown);

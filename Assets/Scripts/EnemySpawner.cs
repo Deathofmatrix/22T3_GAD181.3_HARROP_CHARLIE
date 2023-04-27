@@ -70,7 +70,7 @@ namespace DungeonCrawler_Chaniel
             Vector2 size = spawnArea.bounds.size;
             Vector2 spawnPosition;
 
-            float boxSize = 2f;
+            float boxSize = 1f;
             bool canSpawn = false;
             do
             {
@@ -156,7 +156,7 @@ namespace DungeonCrawler_Chaniel
             foreach (Vector2 spawnPosition in listOfTemporarySpawnPositions)
             {
                 Gizmos.color = new Color(Random.Range(0.6f, 1f), Random.Range(0.6f, 1f), Random.Range(0.6f, 1f));
-                Gizmos.DrawWireCube(spawnPosition, Vector3.one * 2f);
+                Gizmos.DrawWireCube(spawnPosition, Vector3.one * 1f);
             }
         }
     }

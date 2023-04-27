@@ -17,6 +17,8 @@ namespace DungeonCrawler_Chaniel
         public int golemMaxFuel = 100;
         public int killFuelGain = 10;
 
+        private bool isInvincible = false;
+
         public GameObject currentRoom;
 
         [SerializeField] private bool golemRecharging = false;
@@ -45,6 +47,8 @@ namespace DungeonCrawler_Chaniel
 
         [SerializeField] private GameObject golemLight;
 
+        [SerializeField] private GameObject targetArrow;
+
         private float nextFuelReduction;
         [SerializeField] private float timeBetweenFuelReduction;
         
@@ -61,6 +65,14 @@ namespace DungeonCrawler_Chaniel
 
         private void Update()
         {
+            dashPower = moveSpeed * 2;
+            bulletSpeed = dashPower + 1;
+
+            if (PlayerCharacterManager.player2.GetComponent<CharacterController>().inGolem == false)
+            {
+                targetArrow.SetActive(false);
+            }
+
             if (currentRoom.GetComponent<Room>().enemiesInRoom == 0)
             {
                 golemFuel = golemMaxFuel;
@@ -98,6 +110,7 @@ namespace DungeonCrawler_Chaniel
             if (PlayerCharacterManager.player2 != null)
             {
                 GolemShoot();
+                GolemAim();
             }
 
             if (isDashing)
@@ -151,7 +164,7 @@ namespace DungeonCrawler_Chaniel
 
                 if (PlayerCharacterManager.player2.GetComponent<CharacterController>().inGolem && golemShootingDirection != new Vector2(0, 0))
                 {
-                    GameObject newbullet = Instantiate(bullet, golemRigidbody.position + golemShootingDirection * bulletDistanceFromGolem, transform.rotation);
+                    GameObject newbullet = Instantiate(bullet, golemRigidbody.position + golemShootingDirection.normalized * bulletDistanceFromGolem, transform.rotation);
                     newbullet.GetComponent<Rigidbody2D>().velocity = golemShootingDirection.normalized * bulletSpeed;
 
                     FindObjectOfType<SoundManager>().Play("Shoot");
@@ -168,6 +181,30 @@ namespace DungeonCrawler_Chaniel
                 canShoot = true;
             }
             
+        }
+
+        public void GolemAim()
+        {
+            if (PlayerCharacterManager.player2.GetComponent<CharacterController>().inGolem)
+            {
+                golemShootingDirection = PlayerCharacterManager.player2.GetComponent<CharacterController>().playerMovement;
+                Vector3 direction = new Vector3(golemShootingDirection.x, golemShootingDirection.y, 0).normalized;
+                targetArrow.transform.position = transform.position + direction;
+
+                float angle = Mathf.Atan2(targetArrow.transform.position.y - transform.position.y, targetArrow.transform.position.x - transform.position.x) * Mathf.Rad2Deg;
+
+                targetArrow.transform.rotation = Quaternion.Euler(new Vector3(0,0, angle - 90));
+
+                if (golemShootingDirection == new Vector2(0, 0))
+                {
+                    targetArrow.SetActive(false);
+                } 
+                else
+                {
+                    targetArrow.SetActive(true);
+                }
+                //targetArrow.transform.rotation = Quaternion.LookRotation(Vector3.forward, transform.position - targetArrow.transform.position);
+            }
         }
 
         public void GolemDash()
@@ -202,7 +239,7 @@ namespace DungeonCrawler_Chaniel
         }
         public void ReduceFuel(int damage)
         {
-            if (golemActivated)
+            if (golemActivated && !isInvincible)
             {
                 golemFuel -= damage;
             }
@@ -261,11 +298,30 @@ namespace DungeonCrawler_Chaniel
         private IEnumerator Dash()
         {
             Debug.Log("started corountine");
+            Debug.Log("Is Invincible");
+            isInvincible = true;
+            for (int i = 0; i < 32; i++)
+            {
+                if (i != LayerMask.NameToLayer("Wall") && i != LayerMask.NameToLayer("Player Bullet"))
+                {
+                    Debug.LogWarning("wall layer");
+                    Physics2D.IgnoreLayerCollision(gameObject.layer, i, true);
+                }
+            }
             FindObjectOfType<SoundManager>().Play("Dash");
             canDash = false;
             isDashing = true;
             dashTrail.emitting = true;
             yield return new WaitForSeconds(dashTime);
+            for (int i = 0; i < 32; i++)
+            {
+                if (i != LayerMask.NameToLayer("Wall") && i != LayerMask.NameToLayer("Player Bullet"))
+                {
+                    Physics2D.IgnoreLayerCollision(gameObject.layer, i, false);
+                }
+            }
+            isInvincible = false;
+            Debug.Log("Is not Invincible");
             dashTrail.emitting = false;
             isDashing = false;
             yield return new WaitForSeconds(dashCooldown);
