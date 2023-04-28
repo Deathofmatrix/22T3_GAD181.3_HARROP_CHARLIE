@@ -34,6 +34,7 @@ namespace DungeonCrawler_Chaniel
             isBossDead = false;
             FindDoorsInRoom();
             minimapTexture = transform.Find("Minimap texture").gameObject;
+            minimapTexture.GetComponent<SpriteRenderer>().color = new Color(1,1,1,0.5f);
             if (!isStartRoom)
             {
                 minimapTexture.SetActive(false);
@@ -43,6 +44,15 @@ namespace DungeonCrawler_Chaniel
 
         private void Update()
         {
+            if (PlayerCharacterManager.golem.GetComponent<GolemController>().currentRoom == this.gameObject)
+            {
+                minimapTexture.GetComponent<SpriteRenderer>().color = new Color(0,1,0,0.5f);
+            }
+            if (PlayerCharacterManager.golem.GetComponent<GolemController>().currentRoom != this.gameObject)
+            {
+                minimapTexture.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+            }
+
             GiveUpgrade();
 
             if (isBossRoom)

@@ -68,9 +68,12 @@ namespace DungeonCrawler_Chaniel
             dashPower = moveSpeed * 2;
             bulletSpeed = dashPower + 1;
 
-            if (PlayerCharacterManager.player2.GetComponent<CharacterController>().inGolem == false)
+            if (PlayerCharacterManager.player2 != null)
             {
-                targetArrow.SetActive(false);
+                if (PlayerCharacterManager.player2.GetComponent<CharacterController>().inGolem == false)
+                {
+                    targetArrow.SetActive(false);
+                }
             }
 
             if (currentRoom.GetComponent<Room>().enemiesInRoom == 0)

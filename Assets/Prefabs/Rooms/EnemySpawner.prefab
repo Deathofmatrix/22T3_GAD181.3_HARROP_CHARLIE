@@ -49,8 +49,9 @@ MonoBehaviour:
   - {fileID: 2339572082641432767, guid: d476c83b121db8c4cab2651d1a375f6c, type: 3}
   - {fileID: 2339572082641432767, guid: 564b8fdbf971493429db624740386f1e, type: 3}
   spawnArea: {fileID: 2039861056406306506}
-  enemiesToSpawn: 4
+  enemiesToSpawn: 0
   minDistanceFromPlayer: 7
+  timeBetweenWaves: 0
 --- !u!61 &2039861056406306506
 BoxCollider2D:
   m_ObjectHideFlags: 0
