@@ -18,10 +18,6 @@ namespace DungeonCrawler_Chaniel
 
         private List<Vector2> listOfTemporarySpawnPositions = new List<Vector2>();
 
-        private void Start()
-        {
-            timeBetweenWaves = 3;
-        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {

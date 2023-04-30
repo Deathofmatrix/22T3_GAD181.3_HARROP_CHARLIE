@@ -51,7 +51,7 @@ MonoBehaviour:
   spawnArea: {fileID: 2039861056406306506}
   enemiesToSpawn: 0
   minDistanceFromPlayer: 7
-  timeBetweenWaves: 0
+  timeBetweenWaves: 5
 --- !u!61 &2039861056406306506
 BoxCollider2D:
   m_ObjectHideFlags: 0

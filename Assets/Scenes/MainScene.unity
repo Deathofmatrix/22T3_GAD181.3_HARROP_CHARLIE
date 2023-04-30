@@ -13333,7 +13333,7 @@ MonoBehaviour:
   - {fileID: 6694745665087930353, guid: 07edd8ab85726a44dbf0b0427ec973a4, type: 3}
   - {fileID: 6970202380898438627, guid: a8b0e0e213ba1d943836fe9b4abcb267, type: 3}
   - {fileID: 1271486675466577420, guid: 8a4b13cc23060e8438b9ae448041ec52, type: 3}
-  waitTime: 3
+  waitTime: 2
   spawnedBoss: 0
   boss: {fileID: 3733688942727427790, guid: 98f980f46464a7c4f94d41832f37b2ec, type: 3}
   roomsToSpawn: 11

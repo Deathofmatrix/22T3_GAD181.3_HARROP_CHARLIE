@@ -324,7 +324,7 @@ MonoBehaviour:
   fuelBar: {fileID: 0}
   golemLight: {fileID: 301892883}
   targetArrow: {fileID: 403521619004673500}
-  timeBetweenFuelReduction: 0.1
+  timeBetweenFuelReduction: 0.2
   timeBetweenFuelRecharges: 0.1
 --- !u!50 &1276854188745948480
 Rigidbody2D:
