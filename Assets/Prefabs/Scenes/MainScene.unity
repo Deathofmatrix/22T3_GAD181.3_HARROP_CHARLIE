@@ -13710,7 +13710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BoundingShape2D: {fileID: 0}
+  m_BoundingShape2D: {fileID: 1527234928}
   m_Damping: 0.5
   m_MaxWindowSize: -1
 --- !u!4 &1307859283 stripped
@@ -18049,6 +18049,11 @@ Transform:
   m_Father: {fileID: 2026289483}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &1527234928 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2325862451529698856, guid: 592063689d7937e4096c3b31d744b894, type: 3}
+  m_PrefabInstance: {fileID: 4205061441755471204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1528431102 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4244072257529955016, guid: 3b608cc28e89f784d98e46c9912d1964, type: 3}
@@ -21502,7 +21507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7765563492996050479, guid: 592063689d7937e4096c3b31d744b894, type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7765563492996050479, guid: 592063689d7937e4096c3b31d744b894, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size
