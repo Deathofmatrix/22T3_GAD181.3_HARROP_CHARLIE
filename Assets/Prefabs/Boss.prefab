@@ -192,7 +192,10 @@ MonoBehaviour:
   timeBetweenShots: 0.1
   numberOfDirections: 1
   currentHealth: 0
-  maxHealth: 300
+  maxHealth: 400
+  isInvincible: 0
+  spriteRenderer: {fileID: 3427504807703365196}
+  invincibilityDuration: 2
   canvas: {fileID: 0}
   bossHealthSlider: {fileID: 0}
   soundManager: {fileID: 0}

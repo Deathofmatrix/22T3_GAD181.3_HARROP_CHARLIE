@@ -57,6 +57,15 @@ namespace DungeonCrawler_Chaniel
 
         private void Start()
         {
+            for (int i = 0; i < 32; i++)
+            {
+                if (i != LayerMask.NameToLayer("Wall") && i != LayerMask.NameToLayer("Player Bullet"))
+                {
+                    Physics2D.IgnoreLayerCollision(gameObject.layer, i, false);
+                }
+            }
+            isInvincible = false;
+
             sceneLoader = GameObject.Find("Scene Manager").GetComponent<SceneLoader>();
             playerNumberEnum = (PlayerNumberEnum)PlayerCharacterManager.totalPlayersInGame;
             this.name = this.playerNumberEnum.ToString();
