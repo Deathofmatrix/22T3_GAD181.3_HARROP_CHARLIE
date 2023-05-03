@@ -84,7 +84,7 @@ namespace DungeonCrawler_Chaniel
         public void FireRateUpgrade()
         {
             FindObjectOfType<SoundManager>().Play("Upgrade");
-            golem.GetComponent<GolemController>().timeBetweenShots -= 0.05f;
+            golem.GetComponent<GolemController>().timeBetweenShots -= 0.04f;
             golem.GetComponent<GolemController>().currentRoom.GetComponent<Room>().upgradeGiven = true;
             upgradePanel.SetActive(false);
             Time.timeScale = 1;
